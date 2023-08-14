@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_DATABASE', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -68,9 +68,9 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'academica'),
+            'database' => env('DB_DATABASE', 'PROYECTO-SEMILLEROS'),
             'username' => env('DB_USERNAME', 'postgres'),
-            'password' => env('DB_PASSWORD', '3424'),
+            'password' => env('DB_PASSWORD', 'toro2234'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,

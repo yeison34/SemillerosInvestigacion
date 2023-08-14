@@ -13,12 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('departamentos', function (Blueprint $table) {
-            $table->char('coddepto',2);
-            $table->char('nomdepto',30);
-            $table->primary('coddepto');
-            $table->timestamps();
-        });    
+        Schema::create('ciudad', function (Blueprint $table) {
+            $table->id();
+            $table->char('nombre',100);
+            $table->integer('iddepartamento');
+            $table->boolean('estaactivo')->nullable($value=false);
+
+            $table->foreign('iddepartamento')->references('id')->on('departamento');
+
+
+        });
     }
 
     /**
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departamentos');
+        Schema::dropIfExists('ciudad');
     }
 };
