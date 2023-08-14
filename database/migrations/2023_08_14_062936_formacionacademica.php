@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::Create('tipoidentificacion',function(Blueprint $table){
+        Schema::Create('formacionacademica',function(Blueprint $table){
             $table->id();
             $table->integer('idnivelestudio');
             $table->integer('idtitulo');
@@ -22,8 +22,11 @@ return new class extends Migration
             $table->timestamp('periodoinicio');
             $table->boolean('esactual')->default(true);
             $table->timestamp('periodofinal'); 
-            $table->integer('idinstitucionformacion');
             $table->boolean('estaactivo')->default(true); 
+            $table->foreign('idnivelestudio')->references('id')->on('nivelestudio');
+            $table->foreign('idtitulo')->references('id')->on('titulo');
+            $table->foreign('idestadoformacion')->references('id')->on('estadoformacion');
+            $table->foreign('idinstitucionformacion')->references('id')->on('institucionformacion');
             $table->timestamps();
         });
     }
@@ -35,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipoidentificacion');
+        Schema::dropIfExists('formacionacademica');
     }
 };

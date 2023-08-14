@@ -346,6 +346,11 @@ return [
                     'url'  => 'generales/sedes',
                     'icon' => 'fas fa-fw fa-home',
                 ],
+                [
+                    'text' => 'Facultades',
+                    'url'  => '/facultades/listado',
+                    'icon' => 'fas fa-fw fa-home',
+                ],
             ]
         ],
         [

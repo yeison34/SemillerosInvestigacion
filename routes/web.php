@@ -2,12 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Facultades;
+//use App\Http\Controllers\Facultades;
 use App\Http\Controllers\Programas;
 use App\Http\Controllers\Estudiantes;
 use App\Http\Controllers\Calificaciones;
 use App\Http\Controllers\Profesores;
-use App\Http\Controllers\Generales;
+//use App\Http\Controllers\Generales;
 //use App\Http\Controllers\Personas;
 
 //controladores Personas
@@ -22,7 +22,7 @@ use App\Http\Controllers\Personas\Titulo;
 //controladores generales
 use App\Http\Controllers\Generales\Ciudad;
 use App\Http\Controllers\Generales\Departamento;
-//use App\Http\Controllers\Generales\Pais;
+use App\Http\Controllers\Generales\Facultades;
 use App\Http\Controllers\Generales\Paises;
 use App\Http\Controllers\Generales\Sedes;
 
@@ -43,13 +43,14 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [HomeController::class, 'index']);
+//facultades
 Route::get('/facultades/listado', [Facultades::class, 'index'])->name('listadoFac');
 Route::get('/facultades/registrar', [Facultades::class, 'form_registro']);
 Route::post('/facultades/registrar', [Facultades::class, 'registrar']);
- Route::get('/facultades/eliminar/{id}', [Facultades::class, 'eliminar'])->name('eliminaFac');
- Route::get('/facultades/editar/{id}',[Facultades::class, 'form_editar'])->name('editarFac');
+Route::get('/facultades/eliminar/{id}', [Facultades::class, 'eliminar'])->name('eliminaFac');
+Route::get('/facultades/editar/{id}',[Facultades::class, 'form_editar'])->name('editarFac');
 Route::post('/facultades/editar', [Facultades::class, 'editar']);
- 
+ ///programas
 Route::get('/programas/listado', [Programas::class, 'index'])->name('listadoPro');
 Route::get('/programas/registrar', [Programas::class, 'form_registro']);
 Route::post('/programas/registrar', [Programas::class, 'registrar']);

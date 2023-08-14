@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Programa extends Model
+class Semillero extends Model
 {
-    protected $table='programa';
+    protected $table='semillero';
     protected $primaryKey='id';
     public $timestamps=true;
 
-    function facultad(){
-        return $this -> belongsTo(Facultad::class, 'idfacultad');
+    function sede(){
+        return $this -> belongsTo(SedesModel::class, 'idsede');
     }
 }
