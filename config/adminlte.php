@@ -379,6 +379,7 @@ return [
                 ],
             ]
         ],
+        /*
         [
             'text' => 'Facultades',
             'url'  => '/facultades/listado',
@@ -398,19 +399,20 @@ return [
             'text' => 'Estudiantes',
             'url'  => 'estudiantes/listado',
             'icon' => 'fas fa-fw fa-users',
-        ],
+        ],*/
         [
             'text' => 'Semilleros',
             'url'  => 'semilleros/listado',
             'icon' => 'fas fa-fw fa-users',
         ]
         ,
+        /*
         [
             'text' => 'Calificaciones',
             'url'  => '/calificaciones/listado',
             'icon' => 'fas fa-fw fa-book',
         ],
-
+*/
         [
             'text' => 'Reportes',
             'url'  => '/reportes/listado',
