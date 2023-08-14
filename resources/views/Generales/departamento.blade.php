@@ -8,7 +8,7 @@
 
 @section('content')
     <p>Listado de Departamentos</p>
-    <a class="btn btn-success" href="/programas/registrar">Adicionar</a>
+    <a class="btn btn-success" href="generales/reg_departamento">Adicionar</a>
     <table class="table">
         <thead>
             <tr>
