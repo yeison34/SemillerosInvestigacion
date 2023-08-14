@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('departamentos', function (Blueprint $table) {
-            $table->char('coddepto',2);
-            $table->char('nomdepto',30);
-            $table->primary('coddepto');
+        Schema::create('departamento', function (Blueprint $table) {
+            $table->autoIncrement('id')->nullable($value=false)->primary();
             $table->timestamps();
-        });    
+            $table->string('nombre',100);
+            $table->integer('idpais');
+            $table->boolean('estaactivo')->nullable($value=false);
+            $table->foreign('idpais')->references('id')->on('pais');
+            $table->timestamps();
+        });
     }
 
     /**
