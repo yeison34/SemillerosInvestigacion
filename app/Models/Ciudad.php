@@ -10,4 +10,5 @@ class Ciudad extends Model
     protected $table = 'ciudad';
     protected $primaryKey = 'id';
     public $timestamps = true;
+    
 }

@@ -84,6 +84,10 @@ Route::get('/personas/titulo', [titulo::class, 'titulo']);
 
 ///generales
 Route::get('/generales/ciudad', [Ciudad::class, 'ciudad']);
+Route::get('/ciudad/registrar', [Ciudad::class, 'form_registro']);
+Route::get('/ciudad/editar', [Ciudad::class, 'editar']);
+
+
 
 
 //paises luis

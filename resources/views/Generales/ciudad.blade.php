@@ -8,7 +8,7 @@
 
 @section('content')
     <p>Listado de Ciudades</p>
-    <a class="btn btn-success" href="/programas/registrar">Adicionar</a>
+    <a class="btn btn-success" href="/ciudad/registrar">Adicionar</a>
     <table class="table">
         <thead>
             <tr>
@@ -30,8 +30,8 @@
                 <td> Nariño</td>
                 <td><input type="checkbox" value="true"></td>
                 <td>
-                    <a href="#" class="btn btn-info">Editar</a>
-                    <a href="#" class="btn btn-danger">Eliminar</a>
+                    <a href="/ciudad/registrar" class="btn btn-info">Editar</a>
+                    <a href="" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             @php
