@@ -7,8 +7,9 @@
 @stop
 
 @section('content')
-    <form action= "{{ route('saveedit') }}" method= "POST" class="container-fluid mt-4" >
+    <form action= "{{ url('/generales/pais/saveeditar') }}" method= "POST" class="container-fluid mt-4" >
         @csrf
+        <input type="hidden" class="form-control" id="id" name="id"  value='{{$pais->id}}'>
         <table class="table">
             <thead>
                 <tr>
@@ -18,6 +19,7 @@
             </thead>
             <tbody>
                 <tr>
+
                     <td>
                         <div class="col-mb-2">
                             <input type="text" class="form-control" id="nombre" name="nombre"  value='{{$pais->nombre}}'>

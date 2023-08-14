@@ -33,11 +33,20 @@ class Paises extends Controller
         return view('Generales.paisedit',['pais'=>$pais]);
     }
 
-    public function editar(Request $r){
-        $id=$r->input('id');
-        $facultad = Pais::findOrFail($id);
-        $facultad->nombre = $r->input('nombre');
-        $facultad->save();
+    public function saveeditar(Request $r){
+        $id = $r->input('id');
+        print("Hola");
+        $pais = Pais::findOrFail($id);
+        $pais-> nombre = $r->input('nombre');
+        if ($r->input('estaactivo') === "on") {
+           $pais -> estaactivo = true ;
+        }
+        else{
+           $pais -> estaactivo = false ;
+
+        }
+        $pais-> nombre = $r->input('nombre');
+        $pais->save();
         return redirect()->route('listapais');
     }
 

@@ -27,7 +27,7 @@
                 <th scope="row">{{$i}}</th>
                 <td> {{ $p-> nombre }}</td>
                 <td>
-                    <input type="checkbox" value="estaactivo" {{ $p->estaactivo ? 'checked' : '' }} disabled>
+                    <input type="checkbox"  {{ $p->estaactivo ? 'checked' : '' }} disabled>
                 </td>
                 <td>
                     <a class="btn btn-info" href="{{route('editarpais',$p->id)}}">Editar</a>
