@@ -8,7 +8,7 @@
 
 @section('content')
     <p>Listado de Paises</p>
-    <a class="btn btn-success" href="/programas/registrar">Adicionar</a>
+    <a class="btn btn-success m-3" href="/generales/pais/agregar">Adicionar</a>
     <table class="table">
         <thead>
             <tr>
@@ -22,20 +22,22 @@
             @php
                 $i=1;
             @endphp
-            @for ($item=0;$item<1;$item++)
+            @foreach ($paises as $p)
             <tr>
                 <th scope="row">{{$i}}</th>
-                <td> COlombia</td>
-                <td><input type="checkbox" value="true"></td>
+                <td> {{ $p-> nombre }}</td>
                 <td>
-                    <a href="#" class="btn btn-info">Editar</a>
-                    <a href="#" class="btn btn-danger">Eliminar</a>
+                    <input type="checkbox" value="estaactivo" {{ $p->estaactivo ? 'checked' : '' }} disabled>
+                </td>
+                <td>
+                    <a class="btn btn-info" href="{{route('editarpais',$p->id)}}">Editar</a>
+                    <a class="btn btn-danger" href="{{route('eliminapais',$p->id)}}">Eliminar</a>
                 </td>
             </tr>
             @php
                 $i = $i +1
             @endphp
-            @endfor
+            @endforeach
         </tbody>
     </table>
 
