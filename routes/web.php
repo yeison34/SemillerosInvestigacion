@@ -49,7 +49,7 @@ Route::get('/facultades/registrar', [Facultades::class, 'form_registro']);
 Route::post('/facultades/registrar', [Facultades::class, 'registrar']);
 Route::get('/facultades/eliminar/{id}', [Facultades::class, 'eliminar'])->name('eliminaFac');
 Route::get('/facultades/editar/{id}',[Facultades::class, 'form_editar'])->name('editarFac');
-Route::post('/facultades/editar', [Facultades::class, 'editar']);
+Route::post('/facultad/editarfacultad', [Facultades::class, 'editarfacultad']);
  ///programas
 Route::get('/programas/listado', [Programas::class, 'index'])->name('listadoPro');
 Route::get('/programas/registrar', [Programas::class, 'form_registro']);
