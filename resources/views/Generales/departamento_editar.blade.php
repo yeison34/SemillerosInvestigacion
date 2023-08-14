@@ -8,7 +8,8 @@
 
 @section('content')
     <h1>Registro de Departamentos</h1>
-    <form action="{{url('generales/reg_depa')}}" method="post">
+    <form action="{{url('generales/editar_depa')}}" method="post">
+        <input type="hidden" name="id" value="{{$departamento->id}}">
     <table class="table">
             <thead>
                 <tr>
@@ -21,22 +22,21 @@
                 <tr>
                     <td> 
                         <div class="col-mb-2">
-                            <input type="text" class="form-control" name="nombre">
+                            <input type="text" class="form-control" name="nombre" value="{{$departamento->nombre}}">
                         </div>
                     </td>
                     <td>
                         <div>
                             <select name="idpais" class="form-control">
-                                <option value="null">Seleccionar</option>
                                 @foreach($paises as $pais)
-                                    <option value="{{$pais->id}}">{{$pais->nombre}}</option>
+                                    <option value="{{$pais->id}}" {{($departamento->idpais==$pais->id)?'select':''}}>{{$pais->nombre}}</option>
                                 @endforeach
                             </select>
                         </div>    
                     </td>
                     <td> 
                         <div class="col-mb-2">
-                            <input type="checkbox" class="form-control" name="estaactivo" @if($pais->estaactivo) checked @endif>
+                            <input type="checkbox" class="form-control" name="estaactivo" {{$departamento->estaactivo?'checked':''}}>
                         </div>
                     </td>
                 </tr>

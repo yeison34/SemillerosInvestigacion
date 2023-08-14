@@ -23,21 +23,21 @@
             @php
                 $i=1;
             @endphp
-            @for ($item=0;$item<1;$item++)
+            @foreach ($departamentos as $items)
             <tr>
                 <th scope="row">{{$i}}</th>
-                <td> Nariño</td>
-                <td> Colombia</td>
-                <td><input type="checkbox" value="true"></td>
+                <td> {{$items->nombre}}</td>
+                <td> {{$items->paises->nombre}}</td>
+                <td><input type="checkbox" {{$items->estaactivo?'checked':''}} disabled></td>
                 <td>
-                    <a href="#" class="btn btn-info">Editar</a>
-                    <a href="#" class="btn btn-danger">Eliminar</a>
+                    <a href="{{url('departamento/editar',$items->id)}}" class="btn btn-info">Editar</a>
+                    <a href="{{url('departamento/eliminar',$items->id)}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             @php
                 $i = $i +1
             @endphp
-            @endfor
+            @endforeach
         </tbody>
     </table>
 

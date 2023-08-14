@@ -35,7 +35,6 @@ class Paises extends Controller
 
     public function saveeditar(Request $r){
         $id = $r->input('id');
-        print("Hola");
         $pais = Pais::findOrFail($id);
         $pais-> nombre = $r->input('nombre');
         if ($r->input('estaactivo') === "on") {
