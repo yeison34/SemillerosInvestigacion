@@ -8,7 +8,7 @@
 
 @section('content')
     <p>Listado de Sedes</p>
-    <a class="btn btn-success" href="/programas/registrar">Adicionar</a>
+    <a class="btn btn-success" href="/sedes/sedesform">Adicionar</a>
     <table class="table">
         <thead>
             <tr>
@@ -23,21 +23,21 @@
             @php
                 $i=1;
             @endphp
-            @for ($item=0;$item<1;$item++)
+            @foreach ($sedes as $items )
             <tr>
                 <th scope="row">{{$i}}</th>
-                <td> Pasto</td>
-                <td> Nariño</td>
-                <td><input type="checkbox" value="true"></td>
+                <td>{{$items->nombre}}</td>
+                <td>{{$items->ciudad->nombre}}</td>
+                <td><input type="checkbox" {{ $items->estaactivo ? 'checked' : '' }} disabled></td>
                 <td>
-                    <a href="#" class="btn btn-info">Editar</a>
-                    <a href="#" class="btn btn-danger">Eliminar</a>
+                    <a href="{{url('/sedes/editar',$items->id)}}" class="btn btn-info">Editar</a>
+                    <a href="{{url('/sedes/eliminar',$items->id)}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             @php
                 $i = $i +1
             @endphp
-            @endfor
+            @endforeach
         </tbody>
     </table>
 
