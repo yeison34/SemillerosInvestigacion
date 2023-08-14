@@ -4,11 +4,11 @@
 
 @section('content_header')
     <h1>Editar Facultad</h1>
-    <form action= "{{url('facultades/editar')}}" method= "POST" >
+    <form action= "{{url('facultad/editarfacultad')}}" method= "POST" >
         @csrf
         <div class="row">
         <div class="mb-3">
-            <input type="hidden" class="form-control" id="id" name="id" value='{{$modelo->codFacultad}}'>
+            <input type="hidden" class="form-control" id="id" name="id" value='{{$modelo->id}}'>
         </div>
 
         <div class="mb-3">

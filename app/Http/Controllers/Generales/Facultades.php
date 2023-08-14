@@ -35,7 +35,7 @@ class Facultades extends Controller
         return redirect()->route('listadoFac');
     }
 
-    public function editar(Request $r){
+    public function editarfacultad(Request $r){
         $id=$r->input('id');
         $facultad = Facultad::findOrFail($id);
         $facultad->nombre = $r->input('nombre');
