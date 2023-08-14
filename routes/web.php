@@ -45,10 +45,10 @@ Route::get('/dashboard', [HomeController::class, 'index']);
 Route::get('/facultades/listado', [Facultades::class, 'index'])->name('listadoFac');
 Route::get('/facultades/registrar', [Facultades::class, 'form_registro']);
 Route::post('/facultades/registrar', [Facultades::class, 'registrar']);
- Route::get('/facultades/eliminar/{id}', [Facultades::class, 'eliminar'])->name('eliminaFac');
- Route::get('/facultades/editar/{id}',[Facultades::class, 'form_editar'])->name('editarFac');
+Route::get('/facultades/eliminar/{id}', [Facultades::class, 'eliminar'])->name('eliminaFac');
+Route::get('/facultades/editar/{id}',[Facultades::class, 'form_editar'])->name('editarFac');
 Route::post('/facultades/editar', [Facultades::class, 'editar']);
- 
+
 Route::get('/programas/listado', [Programas::class, 'index'])->name('listadoPro');
 Route::get('/programas/registrar', [Programas::class, 'form_registro']);
 Route::post('/programas/registrar', [Programas::class, 'registrar']);
@@ -84,6 +84,8 @@ Route::get('/personas/titulo', [titulo::class, 'titulo']);
 ///generales
 Route::get('/generales/ciudad', [Ciudad::class, 'ciudad']);
 Route::get('/generales/departamento', [Departamento::class, 'departamento']);
+Route::get('/generales/reg_departamento', [Departamento::class, 'formulario_depa']);
+Route::post('/generales/reg_depa', [Departamento::class, 'registrar_dep']);
 Route::get('/generales/pais', [Pais::class, 'pais']);
 Route::get('/generales/sedes', [Sedes::class, 'sedes']);
 
