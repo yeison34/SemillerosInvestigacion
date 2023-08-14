@@ -30,7 +30,7 @@
                 <td> Nariño</td>
                 <td><input type="checkbox" value="true"></td>
                 <td>
-                    <a href="" class="btn btn-info">Editar</a>
+                    <a href="/ciudad/registrar" class="btn btn-info">Editar</a>
                     <a href="" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
