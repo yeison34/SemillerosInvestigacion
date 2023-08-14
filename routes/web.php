@@ -22,7 +22,8 @@ use App\Http\Controllers\Personas\Titulo;
 //controladores generales
 use App\Http\Controllers\Generales\Ciudad;
 use App\Http\Controllers\Generales\Departamento;
-use App\Http\Controllers\Generales\Pais;
+//use App\Http\Controllers\Generales\Pais;
+use App\Http\Controllers\Generales\Paises;
 use App\Http\Controllers\Generales\Sedes;
 
 
@@ -84,8 +85,23 @@ Route::get('/personas/titulo', [titulo::class, 'titulo']);
 ///generales
 Route::get('/generales/ciudad', [Ciudad::class, 'ciudad']);
 Route::get('/generales/departamento', [Departamento::class, 'departamento']);
-Route::get('/generales/pais', [Pais::class, 'pais']);
+
+//paises luis
+Route::get('/generales/pais/agregar', [Paises::class, 'form_registro'])->name('paises');
+Route::post('/generales/pais/agregar', [Paises::class, 'registrar'])->name('addpais');
+Route::post('/generales/pais/saveeditar',[Paises::class, 'saveeditar']);
+Route::get('/generales/pais/editar/{id}',[Paises::class, 'form_editar'])->name('editarpais');
+Route::get('/generales/pais/eliminar/{id}', [Paises::class, 'eliminar'])->name('eliminapais');
+Route::get('/generales/pais', [Paises::class, 'index'])->name('listapais');;
+
+//sedes yasson
 Route::get('/generales/sedes', [Sedes::class, 'sedes']);
+Route::post('/sedes/insertar', [Sedes::class, 'insertar']);
+Route::get('/sedes/sedesform', [Sedes::class, 'formulariosedes']);
+Route::get('/sedes/editar/{id}', [Sedes::class, 'editar']);
+Route::get('/sedes/eliminar/{id}', [Sedes::class, 'eliminar']);
+Route::post('/sedes/guardaredicion', [Sedes::class, 'guardaredicion']);
+
 
 
 
