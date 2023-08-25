@@ -8,7 +8,7 @@
 
 @section('content')
     <p>Listado Estados Formación</p>
-    <a class="btn btn-success" href="/programas/registrar">Adicionar</a>
+    <a class="btn btn-success" href="/formacion/registrar">Adicionar</a>
     <table class="table">
         <thead>
             <tr>

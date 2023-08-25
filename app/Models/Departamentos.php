@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Facultad extends Model
+class Departamentos extends Model
 {
-    protected $table = 'facultad';
+    protected $table = 'departamento';
     protected $primaryKey = 'id';
+    public function paises(){
+        return $this -> belongsTo(pais::class, 'idpais');
+    }
     public $timestamps = true;
 }

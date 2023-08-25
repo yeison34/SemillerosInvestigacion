@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('departamento', function (Blueprint $table) {
-                $table->autoIncrement('id')->nullable($value=false)->primary();
-                $table->timestamps();
+                $table->id();
                 $table->string('nombre',100);
                 $table->integer('idpais');
                 $table->boolean('estaactivo')->nullable($value=false);

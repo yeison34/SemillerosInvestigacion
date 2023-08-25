@@ -84,7 +84,7 @@ Route::get('/personas/titulo', [titulo::class, 'titulo']);
 ///generales
 Route::get('/generales/ciudad', [Ciudad::class, 'ciudad']);
 Route::get('/ciudad/registrar', [Ciudad::class, 'form_registro']);
-Route::get('/ciudad/editar', [Ciudad::class, 'editar']);
+Route::get('/ciudades/editar', [Ciudad::class, 'editar']);
 
 
 Route::get('/generales/departamento', [Departamento::class, 'departamento']);
@@ -92,7 +92,7 @@ Route::get('/generales/pais', [Pais::class, 'pais']);
 Route::get('/generales/sedes', [Sedes::class, 'sedes']);
 
 
-
+Route::get('/formacion/registrar', [EstadoFormacion::class,'Registrar']);
 
 
 

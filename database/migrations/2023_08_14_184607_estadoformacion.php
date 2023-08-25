@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sedes', function (Blueprint $table) {
+        Schema::create('estadoformacion', function (Blueprint $table) {
             $table->id();
             $table->string('nombre',100);
-            $table->integer('idciudad');
-            $table->foreign('idciudad')->references('id')->on('ciudad');
-
+            $table->boolean('estaactivo')->default(true); 
+            $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sedes');
+        Schema::dropIfExists('estadoformacion');
     }
 };
