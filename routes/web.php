@@ -29,6 +29,8 @@ use App\Http\Controllers\Generales\Sedes;
 //controladores semilleros
 use App\Http\Controllers\Semilleros\Semillero;
 use App\Http\Controllers\Semilleristas\Semillerista;
+use App\Http\Controllers\Auth\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,11 +42,11 @@ use App\Http\Controllers\Semilleristas\Semillerista;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 
-Route::get('/dashboard', [HomeController::class, 'index']);
+// Route::get('/dashboard', [HomeController::class, 'index']);
 //facultades
 Route::get('/facultades/listado', [Facultades::class, 'index'])->name('listadoFac');
 Route::get('/facultades/registrar', [Facultades::class, 'form_registro']);
@@ -196,6 +198,13 @@ Route::get('/semillero/semilleroform', [Semillerista::class, 'formulariosemiller
 Route::get('/semillero/editarsemillero/{id}', [Semillerista::class, 'editarsemillero']);
 Route::get('/semillero/eliminarsemillero/{id}', [Semillerista::class, 'eliminarsemillero']);
 Route::post('/semillero/guardaredicionsemillero', [Semillerista::class, 'guardaredicionsemillero']);*/
+
+// login 
+// Route::middleware('authorization')->group(function () {
+Route::get('/', [Auth::class, 'login'])->name('login');
+Route::post('/', [Auth::class, 'userlogin'])->name('userLogin');  
+// });
+
 
 
 

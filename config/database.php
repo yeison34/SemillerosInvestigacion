@@ -42,13 +42,13 @@ return [
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
-        'academica' => [
+        'semilleroaux' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => 'academica',
+            'port' => env('DB_PORT', '5432'),
+            'database' => 'semilleroaux',
             'username' => env('DB_USERNAME', 'postgres'),
-            'password' => env('DB_PASSWORD', '3424'),
+            'password' => env('DB_PASSWORD', 'postgres'),
             // ...
         ],
 
