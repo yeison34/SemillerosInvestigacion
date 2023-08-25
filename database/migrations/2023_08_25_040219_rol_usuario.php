@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('usuario', function (Blueprint $table) {
+        Schema::create('rol_usuario', function (Blueprint $table) {
 
             $table->id();
-            $table->string('usuario',100);
-            $table->integer('password');
+            $table->integer('idusuario');
+            $table->integer('idrol');
             $table->boolean('estaactivo')->nullable($value=false);
-            $table->integer('idpersona')->references('id')->on('persona');
+            $table->foreign('idusuario')->references('id')->on('usuario');
+            $table->foreign('idrol')->references('id')->on('rol');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuario');
+        Schema::dropIfExists('rol_usuario');
     }
 };

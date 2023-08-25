@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Login;
+use App\Models\LoginModel;
 
 
 class Auth extends Controller
@@ -16,18 +16,19 @@ class Auth extends Controller
 
     public function userlogin(Request $r)
     {
-        $usario = new Login();
+        $usario = new LoginModel();
         $usario->usuario = $r->input('usuario');
         $usario->password = $r->input('password');
 
-        $respuesta = Login::where('usuario', 'LIKE', '%' .  $usario->usuario . '%')
-                            ->Where('password', '=','%' .  $usario->password . '%')
-                            ->get();
+        $respuesta = LoginModel::where('usuario', 'LIKE', '%' .  $usario->usuario . '%')
+                                ->Where('password', 'LIKE','%' .  $usario->password . '%')
+                                ->get();
  
+
         if ($respuesta->isEmpty()) {
             return view('Auth.login');
         } else {
-            return view('Generales.pais', ['respuesta' => $respuesta]);
+            return redirect('/generales/pais');
         }
     }
 }
