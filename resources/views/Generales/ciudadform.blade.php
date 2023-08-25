@@ -21,8 +21,8 @@
             </select>
         </div>
         <div class="col-sm-4">
-            <label for="estaactivo" class="form-label">Esta Activo</label>
-            <input type="checkbox" name="estaactivo">
+            <label for="estaactivo" class="form-label">Esta Activo</label> <br>
+            <input type="checkbox" class="form-control" name="estaactivo" @if($items->estaactivo) checked @endif>
         </div>
 </div>
 <br>

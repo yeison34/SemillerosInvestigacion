@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Registro de Sedes</h1>
+    <h1>Registro de Programas</h1>
     <form action= "{{url('programa/insertarprograma')}}" method= "POST" >
         @csrf
         <div class="row">
@@ -23,7 +23,7 @@
         </div>
         <div class="col-sm-4">
             <label for="estaactivo" class="form-label">Esta Activo</label>
-            <input type="checkbox" value="1" name="estaactivo">
+            <input type="checkbox" class="form-control" name="estaactivo">
         </div>
 </div>
 <br>
