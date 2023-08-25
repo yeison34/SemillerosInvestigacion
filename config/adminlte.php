@@ -347,8 +347,18 @@ return [
                     'icon' => 'fas fa-fw fa-home',
                 ],
                 [
+                    'text' => 'Programas',
+                    'url'  => '/programas/listado',
+                    'icon' => 'fas fa-fw fa-home',
+                ],
+                [
                     'text' => 'Facultades',
                     'url'  => '/facultades/listado',
+                    'icon' => 'fas fa-fw fa-home',
+                ],
+                [
+                    'text' => 'Tipo identificación',
+                    'url'  => '/personas/tipoidentificacion',
                     'icon' => 'fas fa-fw fa-home',
                 ],
             ]
@@ -358,30 +368,42 @@ return [
             'icon' => 'fas fa-fw fa-home',
             'submenu' => [
                 [
-                    'text' => 'Nivel Estudio',
-                    'url'  => 'personas/nivelestudio',
+                    'text' => 'Parametros',
                     'icon' => 'fas fa-fw fa-home',
+                    'submenu'=>[
+                        [
+                            'text' => 'Nivel Estudio',
+                            'url'  => 'personas/nivelestudio',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                        [
+                            'text' => 'Titulo',
+                            'url'  => 'personas/titulo',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                        [
+                            'text' => 'Estado Formación',
+                            'url'  => 'personas/estadoformacion',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                        [
+                            'text' => 'Institución Formación',
+                            'url'  => 'personas/institucionformacion',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                    ]
                 ],
                 [
-                    'text' => 'Titulo',
-                    'url'  => 'personas/titulo',
-                    'icon' => 'fas fa-fw fa-home',
-                ],
-                [
-                    'text' => 'Estado Formación',
-                    'url'  => 'personas/estadoformacion',
-                    'icon' => 'fas fa-fw fa-home',
-                ],
-                [
-                    'text' => 'Institución Formación',
-                    'url'  => 'personas/institucionformacion',
-                    'icon' => 'fas fa-fw fa-home',
-                ],
-                [
-                    'text' => 'Formación Academica',
-                    'url'  => 'personas/formacionacademica',
-                    'icon' => 'fas fa-fw fa-home',
-                ],
+                    'text'=>'Acciones',
+                    'icon'=>'fas fa-fw fa-home',
+                    'submenu'=>[
+                        [
+                            'text' => 'Personas',
+                            'url'  => 'personas/personas',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                    ]
+                ]
             ]
         ],
         /*
@@ -407,8 +429,54 @@ return [
         ],*/
         [
             'text' => 'Semilleros',
-            'url'  => 'semilleros/listado',
             'icon' => 'fas fa-fw fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Parametros',
+                    'icon' => 'fas fa-fw fa-home',
+                    'submenu'=>[
+                        [
+                            'text' => 'Semillero',
+                            'url'  => 'semilleros/semillero',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                        [
+                            'text' => 'Semilleristas',
+                            'url'  => 'semilleristas/semillerista',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                        [
+                            'text' => 'Coordinadores',
+                            'url'  => 'semilleros/coordinadores',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                        [
+                            'text' => 'Monitores',
+                            'url'  => 'semilleros/monitores',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                    ]   
+                ],
+
+                [
+                    'text' => 'Transacciones',
+                    'icon' => 'fas fa-fw fa-home',
+                    'submenu'=>[
+                        [
+                            'text' => 'Asignar Proyectos',
+                            'url'  => 'semilleros/asignarproyectos',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                        [
+                            'text' => 'Asignar Eventos',
+                            'url'  => 'semilleros/asignareventos',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                    ] 
+                ],    
+                
+                
+            ]    
         ]
         ,
         /*

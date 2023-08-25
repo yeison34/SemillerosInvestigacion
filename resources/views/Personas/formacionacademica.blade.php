@@ -8,8 +8,10 @@
 
 @section('content')
     <p>Listado Formacion Academica</p>
-    <a class="btn btn-success" href="/programas/registrar">Adicionar</a>
-    <table class="table">
+    
+    <a class="btn btn-success" href="{{url('/formacionacademica/formacionacademicaform',$idpersona)}}">Adicionar</a>
+    <div style="width: 100%;overflow-x: auto;">
+    <table class="table" style="width: 100%;overflow-x: auto; white-space: nowrap;">
         <thead>
             <tr>
             <th scope="col">#</th>
@@ -25,32 +27,32 @@
             </tr>
         </thead>
         <tbody>
-            @php
+        @php
                 $i=1;
             @endphp
-            @for ($item=0;$item<1;$item++)
+            @foreach ($formacionacademica as $items )
             <tr>
                 <th scope="row">{{$i}}</th>
-                <td> Pasto</td>
-                <td> Otro</td>
-                <td> Pasto</td>
-                <td> Otro</td>
-                <td> Pasto</td>
-                <td> Otro</td>
-                <td> Pasto</td>
-                <td><input type="checkbox" value="true"></td>
+                <td>{{$items->nivelestudio->nombre}}</td>
+                <td>{{$items->titulo->nombre}}</td>
+                <td>{{$items->estadoformacion->nombre}}</td>
+                <td>{{$items->institucionformacion->nombre}}</td>
+                <td>{{$items->periodoinicio}}</td>
+                <td><input type="checkbox" {{ $items->esactual ? 'checked' : '' }} disabled></td>
+                <td>{{$items->periodofinal}}</td>
+                <td><input type="checkbox" {{ $items->estaactivo ? 'checked' : '' }} disabled></td>
                 <td>
-                    <a href="#" class="btn btn-info">Editar</a>
-                    <a href="#" class="btn btn-danger">Eliminar</a>
+                    <a href="{{url('/formacionacademica/editarformacionacademica',$items->id)}}" class="btn btn-info">Editar</a>
+                    <a href="{{url('/formacionacademica/eliminarformacionacademica',$items->id)}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             @php
                 $i = $i +1
             @endphp
-            @endfor
+            @endforeach
         </tbody>
     </table>
-
+</div>
 
 
 @stop

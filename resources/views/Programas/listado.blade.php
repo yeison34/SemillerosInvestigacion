@@ -8,14 +8,14 @@
 
 @section('content')
     <p>Listado de Programas</p>
-    <a class="btn btn-success" href="/programas/registrar">Adicionar</a>
+    <a class="btn btn-success" href="{{url('/programa/programaform')}}">Adicionar</a>
     <table class="table">
         <thead>
             <tr>
             <th scope="col">#</th>
-            <th scope="col">Codigo</th>
             <th scope="col">Nombre</th>
             <th scope="col">Facultad</th>
+            <th scope="col">Esta Activo</th>
             <th scope="col">Opciones</th>
             </tr>
         </thead>
@@ -23,14 +23,15 @@
             @php
                 $i=1;
             @endphp
-            @foreach ($programas as $f)
+            @foreach ($programa as $f)
             <tr>
                 <th scope="row">{{$i}}</th>
-                <td> {{ $f->codPrograma}}</td>
-                <td> {{ $f->nomPrograma}}</td>
-                <td> {{ $f->nomFacultad}}</td>
+                <td> {{ $f->nombre}}</td>
+                <td> {{ $f->facultad->nombre}}</td>
+                <td> <input type="checkbox" {{$f->estaactivo?'checked':''}}></td>
                 <td>
-                    <a class="btn btn-danger" href="{{route('eliminarPro',$f->codPrograma)}}">Eliminar</a>
+                    <a class="btn btn-info" href="{{url('programa/editarprograma',$f->id)}}">Editar</a>
+                    <a class="btn btn-danger" href="{{url('programa/eliminarprograma',$f->id)}}">Eliminar</a>
                 </td>
             </tr>
             @php

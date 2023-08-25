@@ -8,35 +8,36 @@
 
 @section('content')
     <p>Listado Titulos</p>
-    <a class="btn btn-success" href="/programas/registrar">Adicionar</a>
+    <a class="btn btn-success" href="/titulo/registrar">Adicionar</a>
     <table class="table">
         <thead>
             <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Nivel Estudio</th>
+            <th scope="col">Esta Activo</th>
             <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody>
-            @php
+        @php
                 $i=1;
             @endphp
-            @for ($item=0;$item<1;$item++)
+            @foreach ($titulo as $items )
             <tr>
                 <th scope="row">{{$i}}</th>
-                <td> Pasto</td>
-                <td> Otro</td>
-                <td><input type="checkbox" value="true"></td>
+                <td>{{$items->nombre}}</td>
+                <td>{{$items->nivelestudio->nombre}}</td>
+                <td><input type="checkbox" {{ $items->estaactivo ? 'checked' : '' }} disabled></td>
                 <td>
-                    <a href="#" class="btn btn-info">Editar</a>
-                    <a href="#" class="btn btn-danger">Eliminar</a>
+                    <a href="{{url('/titulo/editar',$items->id)}}" class="btn btn-info">Editar</a>
+                    <a href="{{url('/titulo/eliminar',$items->id)}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             @php
                 $i = $i +1
             @endphp
-            @endfor
+            @endforeach
         </tbody>
     </table>
 

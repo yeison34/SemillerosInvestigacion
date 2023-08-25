@@ -19,14 +19,16 @@ return new class extends Migration
             $table->integer('idtitulo');
             $table->integer('idestadoformacion');
             $table->integer('idinstitucionformacion');
-            $table->timestamp('periodoinicio');
+            $table->timestamp('periodoinicio')->nullable();
             $table->boolean('esactual')->default(true);
-            $table->timestamp('periodofinal'); 
+            $table->timestamp('periodofinal')->nullable(); 
             $table->boolean('estaactivo')->default(true); 
+            $table->integer('idpersona');
             $table->foreign('idnivelestudio')->references('id')->on('nivelestudio');
             $table->foreign('idtitulo')->references('id')->on('titulo');
             $table->foreign('idestadoformacion')->references('id')->on('estadoformacion');
             $table->foreign('idinstitucionformacion')->references('id')->on('institucionformacion');
+            $table->foreign('idpersona')->references('id')->on('persona');
             $table->timestamps();
         });
     }

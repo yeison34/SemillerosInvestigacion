@@ -23,7 +23,12 @@ class Paises extends Controller
 
         $pais = new Pais();
         $pais->nombre = $r->input('nombre');
-        $pais->estaactivo = $r->input('esactivo');;
+        
+        if($r->input('esactivo')=="on"){
+            $pais->estaactivo = true;
+        }else{
+            $pais->estaactivo = false;
+        }
         $pais->save();
         return redirect()->route('listapais');
     }
