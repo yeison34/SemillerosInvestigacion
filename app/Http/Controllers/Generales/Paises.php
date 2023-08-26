@@ -18,6 +18,7 @@ class Paises extends Controller
     public function form_registro(){
         return view('Generales.paisform');
     }
+    
     public function registrar(Request $r){
 
 
@@ -58,6 +59,12 @@ class Paises extends Controller
         $pais = Pais::findOrFail($id);
         $pais->delete();
         return redirect()->route('listapais');
+    }
+
+    public function cerrarSesion(){
+    //    session_start();
+       session_destroy();
+       return redirect('/');
     }
 
 }

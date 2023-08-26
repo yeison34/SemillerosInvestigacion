@@ -18,7 +18,7 @@
 
         <img class="logo" src="semilleros/imagenes/logoU.png" alt="">
 
-        <form class="d-flex flex-column align-content-center flex-wrap" action= "{{url('/login')}}" method= "GET" id="miFormulario">
+        <form class="d-flex flex-column align-content-center flex-wrap" action= "{{route('userlogin')}}" method= "GET" id="miFormulario">
             @csrf
 
             <div class="form-outline mb-4 col-3">
@@ -58,25 +58,31 @@
     }
 
 </style>
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const formulario = document.getElementById('miFormulario');
+<script>
+    
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     const formulario = document.getElementById('miFormulario');
+    //     formulario.addEventListener('submit', function(event) {
+            
+    //         localStorage.clear();
+    //         event.preventDefault();
 
-        formulario.addEventListener('submit', function(event) {
-            event.preventDefault();
+    //         const formData = new FormData(formulario);
+    //         const formDataObject = {};
 
-            const formData = new FormData(formulario);
-            const formDataObject = {};
+    //         formData.forEach((value, key) => {
+    //             formDataObject[key] = value;
+    //         });
 
-            formData.forEach((value, key) => {
-                formDataObject[key] = value;
-            });
+    //         localStorage.setItem('formularioData', JSON.stringify(formDataObject));
 
-            localStorage.setItem('formularioData', JSON.stringify(formDataObject));
+    //         const valorLocalStorage = localStorage.getItem('formularioData');
 
-        });
-    });
-</script> -->
+    //         window.location.href = "/generales/pais";
+
+    //         });
+    //     });
+</script>
 </html>
 
     

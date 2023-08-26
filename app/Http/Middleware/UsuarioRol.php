@@ -18,23 +18,17 @@ class UsuarioRol
      */
     public function handle(Request $r, Closure $next)
     {
-        $usario = new LoginModel();
-        $usario->usuario = $r->input('usuario');
-        $usario->password = $r->input('password');
-        
-        $respuestaUsuario = LoginModel::where('usuario', 'LIKE', '%' .  $usario->usuario . '%')
-                                    ->Where('password', 'LIKE','%' .  $usario->password . '%')
-                                    ->get();
-        print( $respuestaUsuario);
+        session_start();
 
-        // $id = $respuestaUsuario->id;
-        // $respuestaRol = rol_usuarios::where('id_usuario', 'LIKE', '%' . $id  . '%')->get();
-        
-        // $id_rol = $respuestaRol->id_rol;
-        // if (!$respuestaUsuario->isEmpty() && $id_rol == 2) {
-        //     return $next($request);
-        // }
+        if(isset($_SESSION['usuario'])){
+            return $next($r);
+        }
+        else{
+            return redirect('/');
+            
+        }
 
-        return $next($r);
+
+        
     }
 }

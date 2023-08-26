@@ -10,4 +10,7 @@ class RolUsuarioModel extends Model
     protected $table='rol_usuario';
     protected $primaryKey='id';
     public $timestamps=true;
+    public function rol(){
+        return $this -> belongsTo(RolModel::class, 'idrol');
+    }
 }

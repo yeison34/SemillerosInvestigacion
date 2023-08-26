@@ -84,7 +84,7 @@ Route::get('/regnotas/listado', [Calificaciones::class, 'index']);
 
 // login 
 Route::get('/', [Auth::class, 'login'])->name('login');
-Route::get('/login', [Auth::class, 'userlogin']);  
+Route::get('/login', [Auth::class, 'userlogin'])->name('userlogin');  
 
 Route::middleware('autorizacion')->group(function () {
     ///personas
@@ -124,7 +124,9 @@ Route::middleware('autorizacion')->group(function () {
     Route::post('/generales/pais/saveeditar',[Paises::class, 'saveeditar']);
     Route::get('/generales/pais/editar/{id}',[Paises::class, 'form_editar'])->name('editarpais');
     Route::get('/generales/pais/eliminar/{id}', [Paises::class, 'eliminar'])->name('eliminapais');
-    Route::get('/generales/pais', [Paises::class, 'index'])->name('listapais');;
+    Route::get('/generales/pais', [Paises::class, 'index'])->name('listapais');
+    Route::get('/generales/pais/cerrar', [Paises::class, 'cerrarSesion']);
+
 
     //departamentos juanjose
     Route::get('/generales/departamento', [Departamento::class, 'departamento']);

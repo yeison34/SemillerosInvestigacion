@@ -9,6 +9,7 @@
 @section('content')
     <p>Listado de Paises</p>
     <a class="btn btn-success m-3" href="/generales/pais/agregar">Adicionar</a>
+
     <table class="table">
         <thead>
             <tr>
