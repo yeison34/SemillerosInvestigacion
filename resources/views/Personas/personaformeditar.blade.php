@@ -6,15 +6,15 @@
     <h1>Editar Persona</h1>
     <div style="margin:8px">
         <a class="btn btn-info" href="{{url('/personas/formacionacademica',$persona->id)}}">Formación Academica</a>
-        <a class="btn btn-info" href="/personas/telefono/{{$persona->id}}">Telefono</a>
-        <a class="btn btn-info" href="/personas/correo/{{$persona->id}}">Correo</a>
+        <a class="btn btn-info" href="{{url('/personas/telefono',$persona->id)}}">Telefono</a>
+        <a class="btn btn-info" href="{{url('/personas/correo',$persona->id)}}">Correo</a>
     </div>
     <form action= "{{url('persona/guardaredicionpersona')}}" method= "POST" enctype="multipart/form-data">
         @csrf
         <br>
         <div class="row">
             <img style="width:200px;height:150px;" src="{{asset('imagenes/'.$persona->foto)}}">
-        </div> 
+        </div>
         <input type="hidden" name="id" value="{{$persona->id}}">
         <div class="row">
             <div class="col-sm-3">
@@ -62,7 +62,7 @@
                     <option value="F" {{$persona->genero==$genero?'selected':''}}>Femenino</option>
                 </select>
             </div>
-            
+
             <div class="col-sm-3">
                 <label for="direccion"  class="form-label">Dirección</label>
                 <input type="text" class="form-control" name="direccion" value="{{$persona->direccion}}">
@@ -75,21 +75,21 @@
                 <input type="file" accept=".jpg,.jpeg,.phg,.gif" class="form-control" name="foto" placeholder="foto">
             </div>
             <div class="col-sm-6">
-            </div> 
+            </div>
             <div class="col-sm-3">
                 <br>
                 <button type="submit" class="btn btn-success">Guardar</button>
-            </div>    
-        <div> 
+            </div>
+        <div>
         <br>
-        
+
     </form>
 
 
 @stop
 
 @section('content')
-   
+
 
 @stop
 

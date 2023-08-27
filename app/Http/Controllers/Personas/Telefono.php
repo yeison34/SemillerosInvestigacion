@@ -7,11 +7,7 @@ use App\Models\TelefonoModel;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
-use App\Models\FormacionacademicaModel;
-use App\Models\NivelestudioModel;
-use App\Models\TituloModel;
-use App\Models\EstadoformacionModel;
-use App\Models\InstitucionformacionModel;
+
 
 class Telefono extends Controller
 {

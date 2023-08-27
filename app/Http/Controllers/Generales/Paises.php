@@ -18,12 +18,13 @@ class Paises extends Controller
     public function form_registro(){
         return view('Generales.paisform');
     }
+
     public function registrar(Request $r){
 
 
         $pais = new Pais();
         $pais->nombre = $r->input('nombre');
-        
+
         if($r->input('esactivo')=="on"){
             $pais->estaactivo = true;
         }else{

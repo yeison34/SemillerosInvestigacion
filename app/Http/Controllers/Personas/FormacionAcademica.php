@@ -28,7 +28,7 @@ class FormacionAcademica extends Controller
         $formacionacademica->periodofinal= $r->input('periodofinal');
         $formacionacademica->idpersona= $r->input('idpersona');
         $bandera=$r->input('estaactivo');
-        
+
         if ($r->input('estaactivo') === "on") {
             $formacionacademica->estaactivo = true;
          }
@@ -43,8 +43,7 @@ class FormacionAcademica extends Controller
             $formacionacademica->esactual = false;
          }
 
-        
-        $formacionacademica->save();//guarde 
+        $formacionacademica->save();//guarde
         return redirect('personas/formacionacademica/'.$r->input('idpersona'));
     }
 
@@ -74,8 +73,8 @@ class FormacionAcademica extends Controller
             $formacionacademica->esactual = false;
          }
 
-        
-        $formacionacademica->save();//guarde 
+
+        $formacionacademica->save();//guarde
         return redirect('personas/formacionacademica/'.$r->input('idpersona'));
         //return redirect('personas/formacionacademica');
     }
@@ -84,7 +83,7 @@ class FormacionAcademica extends Controller
         $nivelestudio=DB::table('nivelestudio')->get();
         $estadoformacion=DB::table('estadoformacion')->get();
         $institucionformacion=DB::table('institucionformacion')->get();
-        
+
         return view('Personas.formacionacademicaform',['nivelestudio'=>$nivelestudio,'estadoformacion'=>$estadoformacion,'institucionformacion'=>$institucionformacion,'idpersona'=>$id]);
     }
 
@@ -100,6 +99,6 @@ class FormacionAcademica extends Controller
     public function eliminarformacionacademica($id){
         $sede = SedesModel::findOrFail($id);
         $sede->delete();
-        return redirect("personas/formacionacademica");   
+        return redirect("personas/formacionacademica");
     }
 }

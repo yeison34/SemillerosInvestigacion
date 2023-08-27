@@ -8,7 +8,7 @@
 
 @section('content')
     <p>Listado Formacion Academica</p>
-    
+
     <a class="btn btn-success" href="{{url('/formacionacademica/formacionacademicaform',$idpersona)}}">Adicionar</a>
     <div style="width: 100%;overflow-x: auto;">
     <table class="table" style="width: 100%;overflow-x: auto; white-space: nowrap;">

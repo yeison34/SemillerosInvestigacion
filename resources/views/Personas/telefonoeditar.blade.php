@@ -20,7 +20,7 @@
             <label for="esprincipal"  class="form-label">Principal</label>
             <input type="checkbox" name="esprincipal" {{$telefono->esprincipal?'checked':''}} >
             <label for="estaactivo"  class="form-label">Esta Activo</label>
-            <input type="checkbox"  name="estaactivo" {{$telefono->estaactivo?'checked':''}}>
+            <input type="checkbox"  name="estaactivo" {{$telefono->estaactivo?'checked':''}} >
         </div>
 </div>
 <br>
