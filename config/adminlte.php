@@ -494,7 +494,7 @@ return [
         [
             'text' => 'Cerrar Sesion',
             'url'  => '/generales/pais/cerrar',
-            'icon' => 'fas fa-fw fa-book',
+            'icon' => '',
         ],
 
         /*
