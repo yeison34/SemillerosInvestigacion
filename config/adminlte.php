@@ -292,12 +292,12 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
+            'type' => 'navbar-search',
+            'text' => 'search',
             'topnav_right' => true,
         ],
         [
-            'type'         => 'fullscreen-widget',
+            'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
@@ -307,21 +307,21 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
-           /*
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
+        /*
+     [
+         'text' => 'blog',
+         'url'  => 'admin/blog',
+         'can'  => 'manage-blog',
+     ],
+     [
+         'text'        => 'pages',
+         'url'         => 'admin/pages',
+         'icon'        => 'far fa-fw fa-file',
+         'label'       => 4,
+         'label_color' => 'success',
+     ],
 
-        */
+     */
         ['header' => 'Sistema Semilleros de Investigacion'],
         [
             'text' => 'Generales',
@@ -329,37 +329,37 @@ return [
             'submenu' => [
                 [
                     'text' => 'Pais',
-                    'url'  => 'generales/pais',
+                    'url' => 'generales/pais',
                     'icon' => 'fas fa-fw fa-home',
                 ],
                 [
                     'text' => 'Departamentos',
-                    'url'  => 'generales/departamento',
+                    'url' => 'generales/departamento',
                     'icon' => 'fas fa-fw fa-home',
                 ],
                 [
                     'text' => 'Ciudades',
-                    'url'  => 'generales/ciudad',
+                    'url' => 'generales/ciudad',
                     'icon' => 'fas fa-fw fa-home',
                 ],
                 [
                     'text' => 'Sedes',
-                    'url'  => 'generales/sedes',
+                    'url' => 'generales/sedes',
                     'icon' => 'fas fa-fw fa-home',
                 ],
                 [
                     'text' => 'Programas',
-                    'url'  => '/programas/listado',
+                    'url' => '/programas/listado',
                     'icon' => 'fas fa-fw fa-home',
                 ],
                 [
                     'text' => 'Facultades',
-                    'url'  => '/facultades/listado',
+                    'url' => '/facultades/listado',
                     'icon' => 'fas fa-fw fa-home',
                 ],
                 [
                     'text' => 'Tipo identificación',
-                    'url'  => '/personas/tipoidentificacion',
+                    'url' => '/personas/tipoidentificacion',
                     'icon' => 'fas fa-fw fa-home',
                 ],
             ]
@@ -371,36 +371,36 @@ return [
                 [
                     'text' => 'Parametros',
                     'icon' => 'fas fa-fw fa-home',
-                    'submenu'=>[
+                    'submenu' => [
                         [
                             'text' => 'Nivel Estudio',
-                            'url'  => 'personas/nivelestudio',
+                            'url' => 'personas/nivelestudio',
                             'icon' => 'fas fa-fw fa-home',
                         ],
                         [
                             'text' => 'Titulo',
-                            'url'  => 'personas/titulo',
+                            'url' => 'personas/titulo',
                             'icon' => 'fas fa-fw fa-home',
                         ],
                         [
                             'text' => 'Estado Formación',
-                            'url'  => 'personas/estadoformacion',
+                            'url' => 'personas/estadoformacion',
                             'icon' => 'fas fa-fw fa-home',
                         ],
                         [
                             'text' => 'Institución Formación',
-                            'url'  => 'personas/institucionformacion',
+                            'url' => 'personas/institucionformacion',
                             'icon' => 'fas fa-fw fa-home',
                         ],
                     ]
                 ],
                 [
-                    'text'=>'Acciones',
-                    'icon'=>'fas fa-fw fa-home',
-                    'submenu'=>[
+                    'text' => 'Acciones',
+                    'icon' => 'fas fa-fw fa-home',
+                    'submenu' => [
                         [
                             'text' => 'Personas',
-                            'url'  => 'personas/personas',
+                            'url' => 'personas/personas',
                             'icon' => 'fas fa-fw fa-home',
                         ],
                     ]
@@ -435,25 +435,25 @@ return [
                 [
                     'text' => 'Parametros',
                     'icon' => 'fas fa-fw fa-home',
-                    'submenu'=>[
+                    'submenu' => [
                         [
                             'text' => 'Semillero',
-                            'url'  => 'semilleros/semillero',
+                            'url' => 'semilleros/semillero',
                             'icon' => 'fas fa-fw fa-home',
                         ],
                         [
                             'text' => 'Semilleristas',
-                            'url'  => 'semilleristas/semillerista',
+                            'url' => 'semilleristas/semillerista',
                             'icon' => 'fas fa-fw fa-home',
                         ],
                         [
                             'text' => 'Coordinadores',
-                            'url'  => 'semilleros/coordinadores',
+                            'url' => 'semilleros/coordinadores',
                             'icon' => 'fas fa-fw fa-home',
                         ],
                         [
                             'text' => 'Monitores',
-                            'url'  => 'semilleros/monitores',
+                            'url' => 'semilleros/monitores',
                             'icon' => 'fas fa-fw fa-home',
                         ],
                     ]
@@ -462,20 +462,19 @@ return [
                 [
                     'text' => 'Transacciones',
                     'icon' => 'fas fa-fw fa-home',
-                    'submenu'=>[
+                    'submenu' => [
                         [
                             'text' => 'Asignar Proyectos',
-                            'url'  => 'semilleros/asignarproyectos',
+                            'url' => 'semilleros/asignarproyectos',
                             'icon' => 'fas fa-fw fa-home',
                         ],
                         [
                             'text' => 'Asignar Eventos',
-                            'url'  => 'semilleros/asignareventos',
+                            'url' => 'semilleros/asignareventos',
                             'icon' => 'fas fa-fw fa-home',
                         ],
                     ]
                 ],
-
 
             ]
         ]
@@ -486,10 +485,40 @@ return [
             'url'  => '/calificaciones/listado',
             'icon' => 'fas fa-fw fa-book',
         ],
-*/
+        */
+        [
+            'text' => 'Eventos',
+            'url' => '/eventos',
+            'icon' => 'fas fa-fw fa-book',
+            'submenu' => [
+                [
+                    'text' => 'Parametros',
+                    'icon' => 'fas fa-fw fa-home',
+                    'submenu' => [
+                        [
+                            'text' => 'Tipos',
+                            'url' => '/eventos/tipos',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                        [
+                            'text' => 'Modalidad',
+                            'url' => 'eventos/modalidad',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                        [
+                            'text' => 'Clasificacion',
+                            'url' => 'eventos/clasificacion',
+                            'icon' => 'fas fa-fw fa-home',
+                        ],
+                    ]
+                ],
+            /* Segunda seccion */
+
+            ],
+        ],
         [
             'text' => 'Reportes',
-            'url'  => '/reportes/listado',
+            'url' => '/reportes/listado',
             'icon' => 'fas fa-fw fa-book',
         ],
 
