@@ -29,7 +29,7 @@
                         <div>
                             <select name="idpais" class="form-control">
                                 @foreach($paises as $pais)
-                                    <option value="{{$pais->id}}" {{($departamento->idpais==$pais->id)?'select':''}}>{{$pais->nombre}}</option>
+                                    <option value="{{$pais->id}}" {{($departamento->idpais==$pais->id)?'selected':''}}>{{$pais->nombre}}</option>
                                 @endforeach
                             </select>
                         </div>    

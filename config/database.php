@@ -42,6 +42,15 @@ return [
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
+        'academica' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => 'academica',
+            'username' => env('DB_USERNAME', 'postgres'),
+            'password' => env('DB_PASSWORD', '3424'),
+            // ...
+        ],
 
         'mysql' => [
             'driver' => 'mysql',
@@ -68,9 +77,9 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'semillerosinvestigaciondb'),
+            'database' => env('DB_DATABASE', 'academica'),
             'username' => env('DB_USERNAME', 'postgres'),
-            'password' => env('DB_PASSWORD', '2611'),
+            'password' => env('DB_PASSWORD', '3424'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,

@@ -1,43 +1,63 @@
 <?php
 
 namespace App\Http\Controllers\Generales;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\CiudadModel;
 
 class Ciudad extends Controller
 {
     
     public function ciudad(){
-        //$ciudad = DB::table('ciudad')->get();
-        return view('Generales.ciudad'); 
+        $ciudad = CiudadModel::with('departamento')->get();
+        return view('Generales.ciudad',['ciudad'=>$ciudad]); 
        // ['ciudad' =>$ciudad]);
     }
 
     public function form_registro(){
-        return view('Generales.form_registro');
+        $departamento=DB::table('departamento')->get();
+        return view('Generales.ciudadform',['departamento'=>$departamento]);
     }
 
-    public function registrar(Request $r){
-        $ciudad = new Ciudad();
-        $facultad->codFacultad = $r->input('codigoFacultad');
-        $facultad->nomFacultad = $r->input('nombreFacultad');
-        $facultad->save();
-        return redirect()->route('listadoFac');
+    public function insertarciudad(Request $r){
+        $ciudad = new CiudadModel();
+        $ciudad->nombre=$r->input('nombre');
+        $ciudad->iddepartamento=$r->input('iddepartamento');
+        if ($r->input('estaactivo') == 'on'){
+            $ciudad->estaactivo = true;
+        }
+        else{
+            $ciudad->estaactivo = false;
+        }
+        $ciudad->save();
+        return redirect('/generales/ciudad');
     }
 
-    public function editar(Request $r){
-        //$id=$r->input('codFacultad');
-        //$ciudad = Ciudad::findOrFail($id);
-        //$ciudad->nomFacultad = $r->input('nomFacultad');
-        //$ciudad->save();
-        //return redirect()->route('listadoFac');
-        return view('Generales.registra_ciudad');
+    public function editarciudad($id){
+        $departamento=DB::table('departamento')->get();
+        $ciudad = CiudadModel::findOrFail($id);
+        return view('Generales.ciudadformeditar',['departamento'=>$departamento,'ciudad'=>$ciudad]);
     }
 
-    public function eliminar($id){
-        $facultad = Facultad::findOrFail($id);
-        $facultad->delete();
-        return redirect()->route('listadoFac');
+    public function eliminarciudad($id){
+        $ciudad = CiudadModel::findOrFail($id);
+        $ciudad->delete();
+        return redirect('/generales/ciudad');
+    }
+
+    public function guardaredicionciudad(Request $r){
+        $id=$r->input('id');
+        $ciudad=CiudadModel::findOrFail($id);
+        $ciudad->nombre = $r->input('nombre');//monbrefacultad=a lo que esta en el formulario
+        $ciudad->iddepartamento = $r->input('iddepartamento');
+        $bandera=$r->input('estaactivo');
+        if($bandera=="on"){
+            $ciudad->estaactivo = true;
+        }else{
+            $ciudad->estaactivo = false;
+        }
+        $ciudad->save();//guarde 
+        return redirect('generales/ciudad');
     }
 }

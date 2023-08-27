@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('nombre', 100);
             $table->boolean('estaactivo')->default(true);
             $table->timestamps();
-
         });
     }
 
@@ -29,7 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-
         Schema::dropIfExists('paises');
     }
 };

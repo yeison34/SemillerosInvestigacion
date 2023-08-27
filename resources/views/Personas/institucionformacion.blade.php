@@ -8,7 +8,7 @@
 
 @section('content')
     <p>Listado Instituciones</p>
-    <a class="btn btn-success" href="/programas/registrar">Adicionar</a>
+    <a class="btn btn-success" href="/institucionformacion/institucionformacionform">Adicionar</a>
     <table class="table">
         <thead>
             <tr>
@@ -19,24 +19,23 @@
             </tr>
         </thead>
         <tbody>
-            @php
+        @php
                 $i=1;
             @endphp
-            @for ($item=0;$item<1;$item++)
+            @foreach ($institucionformacion as $items )
             <tr>
                 <th scope="row">{{$i}}</th>
-                <td> Pasto</td>
-                <td> Otro</td>
-                <td><input type="checkbox" value="true"></td>
+                <td>{{$items->nombre}}</td>
+                <td><input type="checkbox" {{ $items->estaactivo ? 'checked' : '' }} disabled></td>
                 <td>
-                    <a href="#" class="btn btn-info">Editar</a>
-                    <a href="#" class="btn btn-danger">Eliminar</a>
+                    <a href="{{url('/institucionformacion/editarinstitucionformacion',$items->id)}}" class="btn btn-info">Editar</a>
+                    <a href="{{url('/institucionformacion/eliminarinstitucionformacion',$items->id)}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             @php
                 $i = $i +1
             @endphp
-            @endfor
+            @endforeach
         </tbody>
     </table>
 

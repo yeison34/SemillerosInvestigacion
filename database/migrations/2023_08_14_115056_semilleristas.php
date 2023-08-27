@@ -19,10 +19,10 @@ return new class extends Migration
             $table->integer('idpersona');
             $table->char('codigo',20)->unique();
             $table->integer('semestre');
-            $table->string('foto',500);
-            $table->string('reportematricula',500);
+            $table->string('reportematricula',500)->nullable();
             $table->integer('idprograma');
             $table->integer('idsemillero');
+            $table->timestamp('fechavinculacion');
             $table->boolean('estaactivo');
             $table->foreign('idsede')->references('id')->on('sedes');
             $table->foreign('idpersona')->references('id')->on('persona');

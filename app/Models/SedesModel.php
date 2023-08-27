@@ -13,6 +13,6 @@ class SedesModel extends Model
     
     public function ciudad()
     {
-        return $this->belongsTo(Ciudad::class, 'idciudad');
+        return $this->belongsTo(CiudadModel::class, 'idciudad');
     }
 }

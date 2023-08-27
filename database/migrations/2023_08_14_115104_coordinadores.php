@@ -18,9 +18,10 @@ return new class extends Migration
             $table->integer('idsede');
             $table->integer('idpersona');
             $table->char('codigo',20)->unique();
-            $table->string('foto',500);
             $table->integer('idprograma');
             $table->integer('idsemillero');
+            $table->timestamp('fechavinculacion');
+            $table->string('acuerdodenombramiento',500)->nullable();
             $table->boolean('estaactivo');
             $table->foreign('idsede')->references('id')->on('sedes');
             $table->foreign('idpersona')->references('id')->on('persona');

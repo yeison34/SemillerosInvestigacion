@@ -25,7 +25,7 @@
                     </td>
                     <td> 
                         <div class="col-mb-2">
-                            <input type="checkbox" class="form-control" name="esactivo" value="1" >
+                            <input type="checkbox" class="form-control" name="esactivo">
                         </div>
                     </td>
                 </tr>

@@ -19,10 +19,14 @@ class Sedes extends Controller
         $sede->nombre = $r->input('nombre');//monbrefacultad=a lo que esta en el formulario
         $sede->idciudad = $r->input('idciudad');
         $bandera=$r->input('estaactivo');
-        $sede->estaactivo = false;
-        if($bandera=="1"){
+        
+        if ($r->input('estaactivo') === "on") {
             $sede->estaactivo = true;
-        }
+         }
+         else{
+            $sede->estaactivo = false;
+ 
+         }
         
         $sede->save();//guarde 
         return redirect('generales/sedes');
