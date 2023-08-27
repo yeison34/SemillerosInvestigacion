@@ -10,4 +10,7 @@ class LoginModel extends Model
     protected $table = 'usuario';
     protected $primaryKey = 'id';
     public $timestamps = true;
+    public function persona(){
+        return $this -> belongsTo(PersonaModel::class, 'idpersona');
+    }
 }

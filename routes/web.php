@@ -204,6 +204,26 @@ Route::middleware('autorizacion')->group(function () {
     Route::get('/semillero/eliminarsemillero/{id}', [Semillerista::class, 'eliminarsemillero']);
     Route::post('/semillero/guardaredicionsemillero', [Semillerista::class, 'guardaredicionsemillero']);*/
 
+    Route::middleware('VerificarCoordinador')->group(function () {
+        //agregar rutas del coodinador
+        
+        //semillerista
+        // Route::get('/semilleristas/semillerista', [Semillerista::class, 'semillerista']);
+        /*Route::post('/semillero/insertarsemillero', [Semillerista::class, 'insertarsemillero']);
+        Route::get('/semillero/semilleroform', [Semillerista::class, 'formulariosemillero']);
+        Route::get('/semillero/editarsemillero/{id}', [Semillerista::class, 'editarsemillero']);
+        Route::get('/semillero/eliminarsemillero/{id}', [Semillerista::class, 'eliminarsemillero']);
+        Route::post('/semillero/guardaredicionsemillero', [Semillerista::class, 'guardaredicionsemillero']);*/
+
+        
+
+    });
+});
+
+Route::middleware('verSemillerista')->group(function () {
+    //agregar rutas de semillerista
+
+
 });
 
 

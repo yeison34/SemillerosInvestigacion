@@ -20,11 +20,16 @@ class UsuarioRol
     {
         session_start();
 
+        
         if(isset($_SESSION['usuario'])){
-            return $next($r);
+            $data = json_decode($_SESSION['usuario'], true);
+            $rol = $data['rol'];
+            if($rol =='administrador' || $rol =='coordinador' || $rol =='semillerista'){
+                return $next($r);
+            }
         }
         else{
-            return redirect('/');
+            return redirect('/'); 
             
         }
 
