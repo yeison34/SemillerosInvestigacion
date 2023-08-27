@@ -3,17 +3,17 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Registro de telefonos</h1>
+    <h1>Registro de Correos</h1>
 @stop
 
 @section('content')
-<form action= "{{url('/telefono/insertartelefono')}}" method= "POST" >
+<form action= "{{url('/correo/insertarcorreo')}}" method= "POST" >
         @csrf
         <input type="hidden" value="{{$idpersona}}" name="idpersona">
         <div class="row">
         <div class="col-sm-4">
-            <label for="telefono" class="form-label">telefono</label>
-            <input type="number" class="form-control" id="telefono" name="telefono">
+            <label for="Correo" class="form-label">correo</label>
+            <input type="email" class="form-control" id="email" name="email">
         </div>
         <div class="col-sm-4">
             <label for="esprincipal" class="form-label">Principal</label>

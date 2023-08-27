@@ -302,11 +302,12 @@ return [
         ],
 
         // Sidebar items
-        /*
+
         [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
+           /*
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
@@ -455,7 +456,7 @@ return [
                             'url'  => 'semilleros/monitores',
                             'icon' => 'fas fa-fw fa-home',
                         ],
-                    ]   
+                    ]
                 ],
 
                 [
@@ -472,11 +473,11 @@ return [
                             'url'  => 'semilleros/asignareventos',
                             'icon' => 'fas fa-fw fa-home',
                         ],
-                    ] 
-                ],    
-                
-                
-            ]    
+                    ]
+                ],
+
+
+            ]
         ]
         ,
         /*
