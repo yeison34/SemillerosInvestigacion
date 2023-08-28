@@ -29,6 +29,13 @@ use App\Http\Controllers\Generales\Sedes;
 //controladores semilleros
 use App\Http\Controllers\Semilleros\Semillero;
 use App\Http\Controllers\Semilleristas\Semillerista;
+
+//controladores
+use App\Http\Controllers\Monitores\Monitor;
+
+//proyectos
+use App\Http\Controllers\Proyectos\Tipoproyecto;
+use App\Http\Controllers\Proyectos\Estadoproyecto;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -98,20 +105,20 @@ Route::post('/ciudad/guardaredicionciudad', [Ciudad::class, 'guardaredicionciuda
 //titulo
 Route::get('/personas/titulo', [Titulo::class, 'titulo']);
 Route::get('/titulo/titulospornivel/{id}', [Titulo::class, 'getTituloPorIdNivel']);
-Route::get('/titulo/registrar', [Titulo::class, 'formulariotitulo']);
+Route::get('/titulo/registrartitulo', [Titulo::class, 'formulariotitulo']);
 Route::post('/titulo/insertartitulo', [Titulo::class, 'insertartitulo']);
-Route::get('/titulo/editar/{id}', [Titulo::class, 'editartitulo']);
-Route::get('/titulo/eliminar/{id}', [Titulo::class, 'eliminartitulo']);
-Route::post('/titulo/guardaredicion', [Titulo::class, 'guardarediciontitulo']);
+Route::get('/titulo/editartitulo/{id}', [Titulo::class, 'editartitulo']);
+Route::get('/titulo/eliminartitulo/{id}', [Titulo::class, 'eliminartitulo']);
+Route::post('/titulo/guardarediciontitulo', [Titulo::class, 'guardarediciontitulo']);
 
 //nivel estudio 
 
 //Route::get('/personas/titulo', [Titulo::class, 'titulo']);
 Route::get('/nivelestudio/registrarnivelestudio', [Nivelestudio::class, 'formularionivelestudio']);
 Route::post('/nivelestudio/insertarnivelestudio', [Nivelestudio::class, 'insertarnivelestudio']);
-Route::get('/nivelestudio/editarnivelestudio/{id}', [Nivelestudio::class, 'editartitulo']);
-Route::get('/nivelestudio/eliminarnivelestudio/{id}', [Nivelestudio::class, 'eliminartitulo']);
-Route::post('/nivelestudio/guardaredicionnivelestudio', [Nivelestudio::class, 'guardarediciontitulo']);
+Route::get('/nivelestudio/editarnivelestudio/{id}', [Nivelestudio::class, 'editarnivelestudio']);
+Route::get('/nivelestudio/eliminarnivelestudio/{id}', [Nivelestudio::class, 'eliminarnivelestudio']);
+Route::post('/nivelestudio/guardaredicionnivelestudio', [Nivelestudio::class, 'guardaredicionnivelestudio']);
 //paises luis
 Route::get('/generales/pais/agregar', [Paises::class, 'form_registro'])->name('paises');
 Route::post('/generales/pais/agregar', [Paises::class, 'registrar'])->name('addpais');
@@ -191,11 +198,32 @@ Route::post('/semillero/guardaredicionsemillero', [Semillero::class, 'guardaredi
 
 //semillerista
 Route::get('/semilleristas/semillerista', [Semillerista::class, 'semillerista']);
-/*Route::post('/semillero/insertarsemillero', [Semillerista::class, 'insertarsemillero']);
-Route::get('/semillero/semilleroform', [Semillerista::class, 'formulariosemillero']);
-Route::get('/semillero/editarsemillero/{id}', [Semillerista::class, 'editarsemillero']);
-Route::get('/semillero/eliminarsemillero/{id}', [Semillerista::class, 'eliminarsemillero']);
-Route::post('/semillero/guardaredicionsemillero', [Semillerista::class, 'guardaredicionsemillero']);*/
+Route::post('/semillerista/insertarsemillerista', [Semillerista::class, 'insertarsemillerista']);
+Route::get('/semillerista/semilleristaform', [Semillerista::class, 'formulariosemillerista']);
+Route::get('/semillerista/editarsemillerista/{id}', [Semillerista::class, 'editarsemillerista']);
+Route::get('/semillerista/eliminarsemillerista/{id}', [Semillerista::class, 'eliminarsemillerista']);
+Route::post('/semillerista/guardaredicionsemillerista', [Semillerista::class, 'guardaredicionsemillerista']);
 
+///monitores
+Route::get('/monitores/monitor', [Monitor::class, 'monitor']);
+Route::post('/monitor/insertarmonitor', [Monitor::class, 'insertarmonitor']);
+Route::get('/monitor/monitorform', [Monitor::class, 'formulariomonitor']);
+Route::get('/monitor/editarmonitor/{id}', [Monitor::class, 'editarmonitor']);
+Route::get('/monitor/eliminarmonitor/{id}', [Monitor::class, 'eliminarmonitor']);
+Route::post('/monitor/guardaredicionmonitor', [Monitor::class, 'guardaredicionmonitor']);
 
+//proyectos
+//tipo proyecto
+Route::get('/tipoproyectos/tipoproyecto', [Tipoproyecto::class, 'tipoproyecto']);
+Route::post('/tipoproyecto/insertartipoproyecto', [Tipoproyecto::class, 'insertartipoproyecto']);
+Route::get('/tipoproyecto/tipoproyectoform', [Tipoproyecto::class, 'formulariotipoproyecto']);
+Route::get('/tipoproyecto/editartipoproyecto/{id}', [Tipoproyecto::class, 'editartipoproyecto']);
+Route::get('/tipoproyecto/eliminartipoproyecto/{id}', [Tipoproyecto::class, 'eliminartipoproyecto']);
+Route::post('/tipoproyecto/guardarediciontipoproyecto', [Tipoproyecto::class, 'guardarediciontipoproyecto']);
 
+Route::get('/estadoproyectos/estadoproyecto', [Estadoproyecto::class, 'estadoproyecto']);
+Route::post('/estadoproyecto/insertarestadoproyecto', [Estadoproyecto::class, 'insertarestadoproyecto']);
+Route::get('/estadoproyecto/estadoproyectoform', [Estadoproyecto::class, 'formularioestadoproyecto']);
+Route::get('/estadoproyecto/editarestadoproyecto/{id}', [Estadoproyecto::class, 'editarestadoproyecto']);
+Route::get('/estadoproyecto/eliminarestadoproyecto/{id}', [Estadoproyecto::class, 'eliminarestadoproyecto']);
+Route::post('/estadoproyecto/guardaredicionestadoproyecto', [Estadoproyecto::class, 'guardaredicionestadoproyecto']);
