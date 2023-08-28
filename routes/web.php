@@ -349,3 +349,7 @@ Route::get('/coordinadores/coordinadorform', [Coordinador::class, 'formulariocoo
 Route::get('/coordinadores/editarcoordinador/{id}', [Coordinador::class, 'editarcoordinador']);
 Route::get('/coordinadores/generarpdf', [Coordinador::class, 'crearpdf']);
 Route::post('/coordinadores/guardaredicioncoordinador', [Coordinador::class, 'guardaredicioncoordinador']);
+Route::get('/coordinadores/pdf',[Coordinador::class, 'generar_pdf']);
+
+//Ruta pdf Juan Jose
+Route::get('/pdf', 'App\Http\Controllers\PDFController@getPDF');

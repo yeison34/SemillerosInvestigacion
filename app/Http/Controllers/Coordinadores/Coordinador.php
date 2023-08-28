@@ -102,4 +102,8 @@ class Coordinador extends Controller
         $coordinador->delete();
         return redirect("coordinadores/coordinador");   
     }
+
+    public function generar_pdf(){
+        return view("Coordinadores.generarpdf");
+    }
 }
