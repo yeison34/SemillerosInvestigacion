@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Personas\Correo;
+use App\Http\Controllers\Personas\Telefono;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 //use App\Http\Controllers\Facultades;
@@ -36,6 +38,10 @@ use App\Http\Controllers\Monitores\Monitor;
 //proyectos
 use App\Http\Controllers\Proyectos\Tipoproyecto;
 use App\Http\Controllers\Proyectos\Estadoproyecto;
+
+//contradores eventos
+use App\Http\Controllers\Eventos\Tipo;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -111,7 +117,7 @@ Route::get('/titulo/editartitulo/{id}', [Titulo::class, 'editartitulo']);
 Route::get('/titulo/eliminartitulo/{id}', [Titulo::class, 'eliminartitulo']);
 Route::post('/titulo/guardarediciontitulo', [Titulo::class, 'guardarediciontitulo']);
 
-//nivel estudio 
+//nivel estudio
 
 //Route::get('/personas/titulo', [Titulo::class, 'titulo']);
 Route::get('/nivelestudio/registrarnivelestudio', [Nivelestudio::class, 'formularionivelestudio']);
@@ -171,6 +177,42 @@ Route::post('/formacionacademica/guardaredicionformacionacademica', [Formacionac
 //personas
 Route::get('/personas/formacionacademica', [FormacionAcademica::class, 'formacionacademica']);
 
+
+//personas/telefono
+Route::get('/personas/telefono/{id}', [Telefono::class, 'telefono']);
+Route::post('/telefono/insertartelefono', [Telefono::class, 'insertartelefono']);
+Route::get('/telefono/telefonoform/{id}', [Telefono::class, 'formulariotelefono']);
+Route::get('/telefono/editartelefono/{id}', [Telefono::class, 'editartelefono']);
+Route::post('/telefono/guardarediciontelefono', [Telefono::class, 'guardarediciontelefono']);
+Route::get('/telefono/eliminartelefono/{id}', [Telefono::class, 'eliminartelefono']);
+
+//Persona/Correo
+Route::get('/personas/correo/{id}', [Correo::class, 'correo']);
+Route::get('/correo/correoform/{id}', [Correo::class, 'formulariocorreo']);
+Route::post('/correo/insertarcorreo', [Correo::class, 'insertarcorreo']);
+Route::get('/correo/editarcorreo/{id}', [Correo::class, 'editarcorreo']);
+Route::post('/correo/guardaredicioncorreo', [Correo::class, 'guardaredicioncorreo']);
+Route::get('/correo/eliminarcorreo/{id}', [Correo::class, 'eliminarcorreo']);
+
+
+//Eventos/tipos
+Route::get('/eventos/tipos', [Tipo::class, 'tipoevento']);
+Route::get('/tipos/tipoeventoform', [Tipo::class, 'formulariotipoevento']);
+Route::post('/tipos/insertartipoevento', [Tipo::class, 'insertartipoevento']);
+Route::get('/tipos/editartipoevento/{id}', [Tipo::class, 'editartipoevento']);
+Route::post('/tipos/guardarediciontipoevento', [Tipo::class, 'guardarediciontipoevento']);
+Route::get('/tipos/eliminartipoevento/{id}', [Tipo::class, 'eliminartipoevento']);
+
+
+
+
+
+
+
+
+
+
+
 //tipo identificacion
 Route::get('/personas/tipoidentificacion', [Tipoidentificacion::class, 'tipoidentificacion']);
 Route::post('/tipoidentificacion/insertartipoidentificacion', [Tipoidentificacion::class, 'insertartipoidentificacion']);
@@ -188,7 +230,9 @@ Route::get('/persona/editarpersona/{id}', [Personaspersonas::class, 'editarperso
 Route::get('/persona/eliminarpersona/{id}', [Personaspersonas::class, 'eliminarpersona']);
 Route::post('/persona/guardaredicionpersona', [Personaspersonas::class, 'guardaredicionpersona']);
 
-///semilleros 
+
+
+///semilleros
 Route::get('/semilleros/semillero', [Semillero::class, 'semillero']);
 Route::post('/semillero/insertarsemillero', [Semillero::class, 'insertarsemillero']);
 Route::get('/semillero/semilleroform', [Semillero::class, 'formulariosemillero']);
