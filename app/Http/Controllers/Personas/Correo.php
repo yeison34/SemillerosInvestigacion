@@ -19,8 +19,6 @@ class Correo extends Controller
     public function insertarcorreo(Request $r){
         $correo = new CorreoModel();//intancia un objeto del modelo
         $correo->email = $r->input('email');
-        $correo=$r->input('esprincipal');
-        $correo=$r->input('estaactivo');
         $correo->idpersona= $r->input('idpersona');
 
         if ($r->input('esprincipal') === "on") {

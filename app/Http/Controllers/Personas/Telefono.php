@@ -19,8 +19,6 @@ class Telefono extends Controller
     public function insertartelefono(Request $r){
         $telefono = new TelefonoModel();//intancia un objeto del modelo
         $telefono->telefono = $r->input('telefono');
-        $bandera=$r->input('esprincipal');
-        $bandera=$r->input('estaactivo');
         $telefono->idpersona= $r->input('idpersona');
 
         if ($r->input('esprincipal') === "on") {
