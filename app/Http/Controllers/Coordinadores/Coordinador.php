@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SedesModel;
 use App\Models\CoordinadoresModel;
+use Dompdf\Dompdf;
 
 class Coordinador extends Controller
 {
@@ -97,9 +98,22 @@ class Coordinador extends Controller
         return view('Coordinadores.coordinadorformeditar',['sede'=>$sede,'persona'=>$persona,'programa'=>$programa,'semillero'=>$semillero,'coordinador'=>$coordinador]);
     }
 
-    public function eliminarcoordinador($id){
-        $coordinador = CoordinadoresModel::findOrFail($id);
-        $coordinador->delete();
-        return redirect("coordinadores/coordinador");   
+
+    public function crearpdf(Request $request)
+    {   
+        $coordinador = CoordinadoresModel::with('sede')->get();
+        // Tu código para obtener los datos del coordinador
+
+        $dompdf = new Dompdf();
+
+        $html = view('Coordinadores.pdf', ['coordinador' => $coordinador])->render();
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+        
+        // Mostrar el PDF en el navegador antes de la descarga
+        $dompdf->stream('coordinadores.pdf', ['Attachment' => false]);
     }
 }
