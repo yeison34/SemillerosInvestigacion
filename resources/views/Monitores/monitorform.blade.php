@@ -3,8 +3,8 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Registro de Personas</h1>
-    <form action= "{{url('semillerista/insertarsemillerista')}}" method= "POST" enctype="multipart/form-data">
+    <h1>Registro de Monitores</h1>
+    <form action= "{{url('monitor/insertarmonitor')}}" method= "POST" enctype="multipart/form-data">
         @csrf
         <br>
         <div class="row">
@@ -21,7 +21,7 @@
                 <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Ingrese el código">
             </div>
             <div class="col-sm-3">
-                <label for="idpersona" class="form-label">Semillerista</label>
+                <label for="idpersona" class="form-label">Monitor</label>
                 <select name="idpersona" class="form-control">
                     <option value="null">Seleccionar</option>
                     @foreach($persona as $items)
@@ -63,19 +63,25 @@
                     @endforeach
                 </select>
             </div>    
-            
-            <div class="col-sm-3">
-                <label for="fechavinculacion" class="form-label">Fecha Vinculación</label>
-                <input type="date" class="form-control" id="fechavinculacion" name="fechavinculacion" placeholder="Ingrese el código">
-            </div>
-            <div class="col-sm-3">
-                <label for="reportematricula" class="form-label">Reporte de Matricula</label>
-                <input type="file" accept=".docx,.pdf" class="form-control" name="reportematricula" placeholder="foto">
-            </div>
+           
+                <div class="col-sm-3">
+                    <label for="fechavinculacion" class="form-label">Fecha Vinculación</label>
+                    <input type="date" class="form-control" id="fechavinculacion" name="fechavinculacion" placeholder="Ingrese el código">
+                </div>
+                <div class="col-sm-3">
+                    <label for="reportematricula" class="form-label">Reporte de Matricula</label>
+                    <input type="file" accept=".docx,.pdf" class="form-control" name="reportematricula" placeholder="foto">
+                </div>
+                
         </div>
         <br>
-        
-        
+        <div class="row">
+                <div class="col-sm-3">
+                    <label for="acuerdodenombramiento" class="form-label">Acuerdo de Nombramiento</label>
+                    <input type="file" accept=".docx,.pdf" class="form-control" name="acuerdodenombramiento" placeholder="foto">
+                </div>
+        </div> 
+        <br>
         <div class="row">
                 <br>
                 <button type="submit" class="btn btn-success">Registrar</button>

@@ -421,12 +421,41 @@ return [
             'text' => 'Profesores',
             'url'  => '/profesores/listado',
             'icon' => 'fas fa-fw fa-user',
-        ],
+        ]
+        */
         [
-            'text' => 'Estudiantes',
-            'url'  => 'estudiantes/listado',
+            'text' => 'Proyectos',
             'icon' => 'fas fa-fw fa-users',
-        ],*/
+            'submenu'=>[
+                [
+                    'text' => 'Parametros',
+                    'icon' => 'fas fa-fw fa-home',
+                    'submenu'=>[
+                        [
+                            'text' => 'Tipo Proyecto',
+                            'icon' => 'fas fa-fw fa-home',
+                            'url'  => 'tipoproyectos/tipoproyecto',
+                        ],
+                        [
+                            'text' => 'Estado Proyecto',
+                            'icon' => 'fas fa-fw fa-home',
+                            'url'  => 'estadoproyectos/estadoproyecto',   
+                        ]
+                    ]
+                ],
+                [
+                    'text' => 'Acciones',
+                    'icon' => 'fas fa-fw fa-home',
+                    'submenu'=>[
+                        [
+                            'text' => 'Proyectos',
+                            'icon' => 'fas fa-fw fa-home',
+                            'url'  => 'proyectos/proyecto',
+                        ]
+                    ]
+                ]
+            ],
+        ],
         [
             'text' => 'Semilleros',
             'icon' => 'fas fa-fw fa-users',
@@ -452,7 +481,7 @@ return [
                         ],
                         [
                             'text' => 'Monitores',
-                            'url'  => 'semilleros/monitores',
+                            'url'  => 'monitores/monitor',
                             'icon' => 'fas fa-fw fa-home',
                         ],
                     ]   

@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1 class="breadcrumb mb-4">Personas</h1>
+    <h1 class="breadcrumb mb-4">Monitores</h1>
 @stop
 
 @section('content')
@@ -13,16 +13,16 @@
         <div class="container-fluid px-4" style="width:100vw">
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-                <li class="breadcrumb-item active">Personas</li>
+                <li class="breadcrumb-item active">Monitores</li>
             </ol>
             <div style="margin:8px">
-                <a class="btn btn-info" href="{{url('/semillerista/semilleristaform')}}">Adicionar</a>
+                <a class="btn btn-info" href="{{url('/monitor/monitorform')}}">Adicionar</a>
             </div>    
             <div class="card mb-4" style="width: 100%;overflow-x: auto; white-space: nowrap;">
               
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                        Listado Semilleristas
+                        Listado Monitores
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple">
@@ -34,11 +34,11 @@
                                 <th scope="col">Apellido</th>
                                 <th scope="col">Identificación</th>
                                 <th scope="col">Sede</th>
-                                <th scope="col">Semestre</th>
                                 <th scope="col">Programa</th>
                                 <th scope="col">Semillero</th>
                                 <th scope="col">Fecha Vinculación</th>
-                                <th scope="col">Reporte Matricula</th>
+                                <th scope="col">Reporte de Matricula</th>
+                                <th scope="col">Acuerdo De Nombramiento</th>
                                 <th scope="col">Esta Activo</th>
                                 <th scope="col">Opciones</th>
                             </tr>
@@ -51,11 +51,11 @@
                                 <th scope="col">Apellido</th>
                                 <th scope="col">Identificación</th>
                                 <th scope="col">Sede</th>
-                                <th scope="col">Semestre</th>
                                 <th scope="col">Programa</th>
                                 <th scope="col">Semillero</th>
                                 <th scope="col">Fecha Vinculación</th>
-                                <th scope="col">Reporte Matricula</th>
+                                <th scope="col">Reporte de Matricula</th>
+                                <th scope="col">Acuerdo De Nombramiento</th>
                                 <th scope="col">Esta Activo</th>
                                 <th scope="col">Opciones</th>
                             </tr>
@@ -64,7 +64,7 @@
                             @php
                                 $i=1;
                             @endphp
-                            @foreach ($semillerista as $items)
+                            @foreach ($monitor as $items)
                             <tr>
                                 <td scope="row">{{$i}}</td>
                                 <td scope="col">{{$items->codigo}}</td>
@@ -72,15 +72,15 @@
                                 <td scope="col">{{$items->persona->apellido}}</td>
                                 <td scope="col">{{$items->persona->identificacion}}</td>
                                 <td scope="col">{{$items->sede->nombre}}</td>
-                                <td scope="col">{{$items->semestre}}</td>
                                 <td scope="col">{{$items->programa->nombre}}</td>
                                 <td scope="col">{{$items->semillero->nombre}}</td>
                                 <td scope="col">{{$items->fechavinculacion}}</td>
-                                <th scope="col"><a class="{{$items->reportematricula!=null?'visible':'oculto'}}" href="{{asset('semilleristas/reportesmatricula/'.$items->reportematricula)}}">Ver Reporte</a></th>
+                                <th scope="col"><a class="{{$items->reportematricula!=null?'visible':'oculto'}}" href="{{asset('monitores/reportesmatricula/'.$items->reportematricula)}}">Ver Reporte</a></th>
+                                <th scope="col"><a class="{{$items->acuerdodenombramiento!=null?'visible':'oculto'}}" href="{{asset('monitores/adjuntos/'.$items->acuerdodenombramiento)}}">Ver Acuerdo</a></th>
                                 <td scope="col"><input type="checkbox" {{$items->estaactivo?'checked':''}} disabled></td>
                                 <td scope="col">
-                                    <a href="{{url('semillerista/editarsemillerista',$items->id)}}" class="btn btn-info">Editar</a>
-                                    <a href="{{url('semillerista/eliminarsemillerista',$items->id)}}" class="btn btn-danger">Eliminar</a>
+                                    <a href="{{url('monitor/editarmonitor',$items->id)}}" class="btn btn-info">Editar</a>
+                                    <a href="{{url('monitor/eliminarmonitor',$items->id)}}" class="btn btn-danger">Eliminar</a>
                                 </td>
                             </tr>
                             @php

@@ -32,7 +32,7 @@ class NivelEstudio extends Controller
 
     public function guardaredicionnivelestudio(Request $r){
         $id=$r->input('id');
-        $nivelestudio=TituloModel::findOrFail($id);
+        $nivelestudio=NivelestudioModel::findOrFail($id);
         $nivelestudio->nombre = $r->input('nombre');//monbrefacultad=a lo que esta en el formulario
         $bandera=$r->input('estaactivo');
         if($bandera=="on"){
@@ -41,7 +41,7 @@ class NivelEstudio extends Controller
             $nivelestudio->estaactivo = false;
         }
         $nivelestudio->save();//guarde 
-        return redirect('generales/titulo');
+        return redirect('personas/nivelestudio');
     }
 
     public function formularionivelestudio(){
@@ -50,13 +50,13 @@ class NivelEstudio extends Controller
     }
 
     public function editarnivelestudio($id){
-        $nivelestudio=TituloModel::findOrFail($id);
-        return view('Personas.nivelestudioformeditar',['nivelestudio'=>$titulo]);
+        $nivelestudio=NivelestudioModel::findOrFail($id);
+        return view('Personas.nivelestudioformeditar',['nivelestudio'=>$nivelestudio]);
     }
 
     public function eliminarnivelestudio($id){
-        $titulo = TituloModel::findOrFail($id);
-        $titulo->delete();
-        return redirect("generales/nivelestudio");   
+        $nivelestudio = NivelestudioModel::findOrFail($id);
+        $nivelestudio->delete();
+        return redirect("personas/nivelestudio");   
     }
 }

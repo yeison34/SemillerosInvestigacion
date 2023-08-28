@@ -6,17 +6,17 @@
     <h1>Editar Sede</h1>
     <form action= "{{url('titulo/guardarediciontitulo')}}" method= "POST" >
         @csrf
-        <input type="hidden" name="id" value="{{$sede->id}}">
+        <input type="hidden" name="id" value="{{$titulo->id}}">
         <div class="row">
         <div class="col-sm-4">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" value="{{$sede->nombre}}" placeholder="Ingrese el Nombre">
+            <input type="text" class="form-control" id="nombre" name="nombre" value="{{$titulo->nombre}}" placeholder="Ingrese el Nombre">
         </div>
         <div class="col-sm-4">
-            <label for="idciudad" class="form-label">Ciudad</label>
-            <select name="idciudad" class="form-control">
+            <label for="idnivelestudio" class="form-label">Nivel Estudio</label>
+            <select name="idnivelestudio" class="form-control">
                 @foreach($nivelestudio as $items)
-                    <option value="{{$items->id}}" {{($items->id==$titulo->idnivelestudio)?'selected':''}}>{{$titulo->nombre}}</option>
+                    <option value="{{$items->id}}" {{($items->id==$titulo->idnivelestudio)?'selected':''}}>{{$items->nombre}}</option>
                 @endforeach
             </select>
            

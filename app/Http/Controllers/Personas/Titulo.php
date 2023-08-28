@@ -45,7 +45,7 @@ class Titulo extends Controller
             $titulo->estaactivo = false;
         }
         $titulo->save();//guarde 
-        return redirect('generales/titulo');
+        return redirect('personas/titulo');
     }
 
     public function formulariotitulo(){
@@ -55,12 +55,13 @@ class Titulo extends Controller
 
     public function editartitulo($id){
         $titulo=TituloModel::findOrFail($id);
-        return view('Personas.tituloformeditar',['titulo'=>$titulo]);
+        $nivelestudio=DB::table('nivelestudio')->get();
+        return view('Personas.tituloformeditar',['titulo'=>$titulo,'nivelestudio'=>$nivelestudio]);
     }
 
     public function eliminartitulo($id){
         $titulo = TituloModel::findOrFail($id);
         $titulo->delete();
-        return redirect("generales/titulo");   
+        return redirect("personas/titulo");   
     }
 }

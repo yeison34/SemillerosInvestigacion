@@ -3,8 +3,8 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Registro de Tipos de Identificación</h1>
-    <form action= "{{url('tipoidentificacion/insertartipoidentificacion')}}" method= "POST" >
+    <h1>Registro Estados Proyectos</h1>
+    <form action= "{{url('estadoproyecto/insertarestadoproyecto')}}" method= "POST" >
         @csrf
         <div class="row">
         <div class="col-sm-4">

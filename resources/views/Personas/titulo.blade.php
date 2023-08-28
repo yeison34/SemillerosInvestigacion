@@ -8,7 +8,7 @@
 
 @section('content')
     <p>Listado Titulos</p>
-    <a class="btn btn-success" href="/titulo/registrar">Adicionar</a>
+    <a class="btn btn-success" href="/titulo/registrartitulo">Adicionar</a>
     <table class="table">
         <thead>
             <tr>
@@ -30,8 +30,8 @@
                 <td>{{$items->nivelestudio->nombre}}</td>
                 <td><input type="checkbox" {{ $items->estaactivo ? 'checked' : '' }} disabled></td>
                 <td>
-                    <a href="{{url('/titulo/editar',$items->id)}}" class="btn btn-info">Editar</a>
-                    <a href="{{url('/titulo/eliminar',$items->id)}}" class="btn btn-danger">Eliminar</a>
+                    <a href="{{url('/titulo/editartitulo',$items->id)}}" class="btn btn-info">Editar</a>
+                    <a href="{{url('/titulo/eliminartitulo',$items->id)}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             @php

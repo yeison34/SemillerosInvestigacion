@@ -42,13 +42,13 @@ class Semillero extends Controller
         
         $archivoerror=$_FILES['logo']['error'];
         if($archivoerror===UPLOAD_ERR_NO_FILE){
-            $persona->foto='xdefaultx.png';
+            $semillero->logo='xdefaultx.png';
         }else{
             $rutadestino=public_path('semilleros/imagenes/');
             $rutadestino=$rutadestino . $r->input('numeroresolucion') . $_FILES['logo']['name'];
             $rutatemp=$_FILES['logo']['tmp_name'];
             move_uploaded_file($rutatemp,$rutadestino);
-            $persona->foto=$r->input('numeroresolucion') . $_FILES['logo']['name'];
+            $semillero->logo=$r->input('numeroresolucion') . $_FILES['logo']['name'];
         }
 
         $archivoerror=$_FILES['archivoresolucion']['error'];
@@ -57,7 +57,7 @@ class Semillero extends Controller
             $rutadestino=$rutadestino . $r->input('numeroresolucion') . $_FILES['archivoresolucion']['name'];
             $rutatemp=$_FILES['archivoresolucion']['tmp_name'];
             move_uploaded_file($rutatemp,$rutadestino);
-            $persona->foto=$r->input('numeroresolucion') . $_FILES['archivoresolucion']['name'];
+            $semillero->archivoresolucion=$r->input('numeroresolucion') . $_FILES['archivoresolucion']['name'];
         }
 
         $semillero->save();//guarde 
