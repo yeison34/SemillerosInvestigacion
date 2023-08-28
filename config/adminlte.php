@@ -550,6 +550,11 @@ return [
             'url' => '/reportes/listado',
             'icon' => 'fas fa-fw fa-book',
         ],
+        [
+            'text' => 'Cerrar Sesion',
+            'url'  => '/generales/pais/cerrar',
+            'icon' => '',
+        ],
 
         /*
         [

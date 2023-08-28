@@ -31,6 +31,8 @@ use App\Http\Controllers\Generales\Sedes;
 //controladores semilleros
 use App\Http\Controllers\Semilleros\Semillero;
 use App\Http\Controllers\Semilleristas\Semillerista;
+use App\Http\Controllers\Auth\Auth;
+
 
 //controladores
 use App\Http\Controllers\Monitores\Monitor;
@@ -53,11 +55,11 @@ use App\Http\Controllers\Eventos\Tipo;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 
-Route::get('/dashboard', [HomeController::class, 'index']);
+// Route::get('/dashboard', [HomeController::class, 'index']);
 //facultades
 Route::get('/facultades/listado', [Facultades::class, 'index'])->name('listadoFac');
 Route::get('/facultades/registrar', [Facultades::class, 'form_registro']);
@@ -91,23 +93,35 @@ Route::get('/estudiantes/eliminar/{id}',[Estudiantes::class, 'Eliminar'])->name(
 
 Route::get('/regnotas/listado', [Calificaciones::class, 'index']);
 
-///personas
 
 
+// login 
+Route::get('/', [Auth::class, 'login'])->name('login');
+Route::get('/login', [Auth::class, 'userlogin'])->name('userlogin');  
 
-Route::get('/personas/nivelestudio', [NivelEstudio::class, 'nivelestudio']);
-Route::get('/personas/tipoidentificacion', [TipoIdentificacion::class, 'tipoidentificacion']);
-//Route::get('/personas/titulo', [Titulo::class, 'titulo']);
+Route::middleware('autorizacion')->group(function () {
+    ///personas
+    Route::get('/personas/nivelestudio', [NivelEstudio::class, 'nivelestudio']);
+    Route::get('/personas/tipoidentificacion', [TipoIdentificacion::class, 'tipoidentificacion']);
+    //Route::get('/personas/titulo', [Titulo::class, 'titulo']);
 
-///generales pedro//ciudad
-Route::get('/generales/ciudad', [Ciudad::class, 'ciudad']);
-Route::post('/ciudad/insertarciudad', [Ciudad::class, 'insertarciudad']);
-Route::get('/ciudad/ciudadform', [Ciudad::class, 'form_registro']);
-Route::get('/ciudad/editarciudad/{id}', [Ciudad::class, 'editarciudad']);
-Route::get('/ciudad/eliminarciudad/{id}', [Ciudad::class, 'eliminarciudad']);
-Route::post('/ciudad/guardaredicionciudad', [Ciudad::class, 'guardaredicionciudad']);
+    ///generales pedro//ciudad
+    Route::get('/generales/ciudad', [Ciudad::class, 'ciudad']);
+    Route::post('/ciudad/insertarciudad', [Ciudad::class, 'insertarciudad']);
+    Route::get('/ciudad/ciudadform', [Ciudad::class, 'form_registro']);
+    Route::get('/ciudad/editarciudad/{id}', [Ciudad::class, 'editarciudad']);
+    Route::get('/ciudad/eliminarciudad/{id}', [Ciudad::class, 'eliminarciudad']);
+    Route::post('/ciudad/guardaredicionciudad', [Ciudad::class, 'guardaredicionciudad']);
 
 
+    //titulo
+    Route::get('/personas/titulo', [Titulo::class, 'titulo']);
+    Route::get('/titulo/titulospornivel/{id}', [Titulo::class, 'getTituloPorIdNivel']);
+    Route::get('/titulo/registrar', [Titulo::class, 'formulariotitulo']);
+    Route::post('/titulo/insertartitulo', [Titulo::class, 'insertartitulo']);
+    Route::get('/titulo/editar/{id}', [Titulo::class, 'editartitulo']);
+    Route::get('/titulo/eliminar/{id}', [Titulo::class, 'eliminartitulo']);
+    Route::post('/titulo/guardaredicion', [Titulo::class, 'guardarediciontitulo']);
 //titulo
 Route::get('/personas/titulo', [Titulo::class, 'titulo']);
 Route::get('/titulo/titulospornivel/{id}', [Titulo::class, 'getTituloPorIdNivel']);
@@ -117,7 +131,22 @@ Route::get('/titulo/editartitulo/{id}', [Titulo::class, 'editartitulo']);
 Route::get('/titulo/eliminartitulo/{id}', [Titulo::class, 'eliminartitulo']);
 Route::post('/titulo/guardarediciontitulo', [Titulo::class, 'guardarediciontitulo']);
 
-//nivel estudio
+    //nivel estudio
+
+    //Route::get('/personas/titulo', [Titulo::class, 'titulo']);
+    Route::get('/nivelestudio/registrarnivelestudio', [Nivelestudio::class, 'formularionivelestudio']);
+    Route::post('/nivelestudio/insertarnivelestudio', [Nivelestudio::class, 'insertarnivelestudio']);
+    Route::get('/nivelestudio/editarnivelestudio/{id}', [Nivelestudio::class, 'editartitulo']);
+    Route::get('/nivelestudio/eliminarnivelestudio/{id}', [Nivelestudio::class, 'eliminartitulo']);
+    Route::post('/nivelestudio/guardaredicionnivelestudio', [Nivelestudio::class, 'guardarediciontitulo']);
+    //paises luis
+    Route::get('/generales/pais/agregar', [Paises::class, 'form_registro'])->name('paises');
+    Route::post('/generales/pais/agregar', [Paises::class, 'registrar'])->name('addpais');
+    Route::post('/generales/pais/saveeditar',[Paises::class, 'saveeditar']);
+    Route::get('/generales/pais/editar/{id}',[Paises::class, 'form_editar'])->name('editarpais');
+    Route::get('/generales/pais/eliminar/{id}', [Paises::class, 'eliminar'])->name('eliminapais');
+    Route::get('/generales/pais', [Paises::class, 'index'])->name('listapais');
+    Route::get('/generales/pais/cerrar', [Paises::class, 'cerrarSesion']);
 
 //Route::get('/personas/titulo', [Titulo::class, 'titulo']);
 Route::get('/nivelestudio/registrarnivelestudio', [Nivelestudio::class, 'formularionivelestudio']);
@@ -133,47 +162,49 @@ Route::get('/generales/pais/editar/{id}',[Paises::class, 'form_editar'])->name('
 Route::get('/generales/pais/eliminar/{id}', [Paises::class, 'eliminar'])->name('eliminapais');
 Route::get('/generales/pais', [Paises::class, 'index'])->name('listapais');;
 
-//departamentos juanjose
-Route::get('/generales/departamento', [Departamento::class, 'departamento']);
-Route::get('/generales/reg_departamento', [Departamento::class, 'formulario_depa']);
-Route::post('/generales/reg_depa', [Departamento::class, 'registrar_dep']);
-Route::get('/generales/generales/reg_departamento', [Departamento::class, 'formulario_depa']);
-Route::get('/departamento/editar/{id}', [Departamento::class, 'editar']);
-Route::get('/departamento/eliminar/{id}', [Departamento::class, 'eliminar']);
-Route::post('/generales/editar_depa', [Departamento::class, 'editar_depa']);
-//sedes yasson
-//Route::get('/generales/pais', [Pais::class, 'pais']);
-Route::get('/generales/sedes', [Sedes::class, 'sedes']);
-Route::post('/sedes/insertar', [Sedes::class, 'insertar']);
-Route::get('/sedes/sedesform', [Sedes::class, 'formulariosedes']);
-Route::get('/sedes/editar/{id}', [Sedes::class, 'editar']);
-Route::get('/sedes/eliminar/{id}', [Sedes::class, 'eliminar']);
-Route::post('/sedes/guardaredicion', [Sedes::class, 'guardaredicion']);
+    //departamentos juanjose
+    Route::get('/generales/departamento', [Departamento::class, 'departamento']);
+    Route::get('/generales/reg_departamento', [Departamento::class, 'formulario_depa']);
+    Route::post('/generales/reg_depa', [Departamento::class, 'registrar_dep']);
+    Route::get('/generales/generales/reg_departamento', [Departamento::class, 'formulario_depa']);
+    Route::get('/departamento/editar/{id}', [Departamento::class, 'editar']);
+    Route::get('/departamento/eliminar/{id}', [Departamento::class, 'eliminar']);
+    Route::post('/generales/editar_depa', [Departamento::class, 'editar_depa']);
+    //sedes yasson
+    //Route::get('/generales/pais', [Pais::class, 'pais']);
+    Route::get('/generales/sedes', [Sedes::class, 'sedes']);
+    Route::post('/sedes/insertar', [Sedes::class, 'insertar']);
+    Route::get('/sedes/sedesform', [Sedes::class, 'formulariosedes']);
+    Route::get('/sedes/editar/{id}', [Sedes::class, 'editar']);
+    Route::get('/sedes/eliminar/{id}', [Sedes::class, 'eliminar']);
+    Route::post('/sedes/guardaredicion', [Sedes::class, 'guardaredicion']);
 
-//estadoformacion
-Route::get('/personas/estadoformacion', [EstadoFormacion::class, 'estadoformacion']);
-Route::post('/estadoformacion/insertarestadoformacion', [EstadoFormacion::class, 'insertarestadoformacion']);
-Route::get('/estadoformacion/estadoformacionform', [EstadoFormacion::class, 'formularioestadoformacion']);
-Route::get('/estadoformacion/editarestadoformacion/{id}', [EstadoFormacion::class, 'editarestadoformacion']);
-Route::get('/estadoformacion/eliminarestadoformacion/{id}', [EstadoFormacion::class, 'eliminarestadoformacion']);
-Route::post('/estadoformacion/guardaredicionestadoformacion', [EstadoFormacion::class, 'guardaredicionestadoformacion']);
+    //estadoformacion
+    Route::get('/personas/estadoformacion', [EstadoFormacion::class, 'estadoformacion']);
+    Route::post('/estadoformacion/insertarestadoformacion', [EstadoFormacion::class, 'insertarestadoformacion']);
+    Route::get('/estadoformacion/estadoformacionform', [EstadoFormacion::class, 'formularioestadoformacion']);
+    Route::get('/estadoformacion/editarestadoformacion/{id}', [EstadoFormacion::class, 'editarestadoformacion']);
+    Route::get('/estadoformacion/eliminarestadoformacion/{id}', [EstadoFormacion::class, 'eliminarestadoformacion']);
+    Route::post('/estadoformacion/guardaredicionestadoformacion', [EstadoFormacion::class, 'guardaredicionestadoformacion']);
 
-//institucion fromacion
-Route::get('/personas/institucionformacion', [InstitucionFormacion::class, 'institucionformacion']);
-Route::post('/institucionformacion/insertarinstitucionformacion', [Institucionformacion::class, 'insertarinstitucionformacion']);
-Route::get('/institucionformacion/institucionformacionform', [Institucionformacion::class, 'formularioinstitucionformacion']);
-Route::get('/institucionformacion/editarinstitucionformacion/{id}', [Institucionformacion::class, 'editarinstitucionformacion']);
-Route::get('/institucionformacion/eliminarinstitucionformacion/{id}', [Institucionformacion::class, 'eliminarinstitucionformacion']);
-Route::post('/institucionformacion/guardaredicioninstitucionformacion', [Institucionformacion::class, 'guardaredicioninstitucionformacion']);
+    //institucion fromacion
+    Route::get('/personas/institucionformacion', [InstitucionFormacion::class, 'institucionformacion']);
+    Route::post('/institucionformacion/insertarinstitucionformacion', [Institucionformacion::class, 'insertarinstitucionformacion']);
+    Route::get('/institucionformacion/institucionformacionform', [Institucionformacion::class, 'formularioinstitucionformacion']);
+    Route::get('/institucionformacion/editarinstitucionformacion/{id}', [Institucionformacion::class, 'editarinstitucionformacion']);
+    Route::get('/institucionformacion/eliminarinstitucionformacion/{id}', [Institucionformacion::class, 'eliminarinstitucionformacion']);
+    Route::post('/institucionformacion/guardaredicioninstitucionformacion', [Institucionformacion::class, 'guardaredicioninstitucionformacion']);
 
-//formacionacademica
-Route::get('/personas/formacionacademica/{id}', [FormacionAcademica::class, 'formacionacademica']);
-Route::post('/formacionacademica/insertarformacionacademica', [Formacionacademica::class, 'insertarformacionacademica']);
-Route::get('/formacionacademica/formacionacademicaform/{id}', [Formacionacademica::class, 'formularioformacionacademica']);
-Route::get('/formacionacademica/editarformacionacademica/{id}', [Formacionacademica::class, 'editarformacionacademica']);
-Route::get('/formacionacademica/eliminarformacionacademica/{id}', [Formacionacademica::class, 'eliminarformacionacademica']);
-Route::post('/formacionacademica/guardaredicionformacionacademica', [Formacionacademica::class, 'guardaredicionformacionacademica']);
+    //formacionacademica
+    Route::get('/personas/formacionacademica/{id}', [FormacionAcademica::class, 'formacionacademica']);
+    Route::post('/formacionacademica/insertarformacionacademica', [Formacionacademica::class, 'insertarformacionacademica']);
+    Route::get('/formacionacademica/formacionacademicaform/{id}', [Formacionacademica::class, 'formularioformacionacademica']);
+    Route::get('/formacionacademica/editarformacionacademica/{id}', [Formacionacademica::class, 'editarformacionacademica']);
+    Route::get('/formacionacademica/eliminarformacionacademica/{id}', [Formacionacademica::class, 'eliminarformacionacademica']);
+    Route::post('/formacionacademica/guardaredicionformacionacademica', [Formacionacademica::class, 'guardaredicionformacionacademica']);
 
+    //personas
+    Route::get('/personas/formacionacademica', [FormacionAcademica::class, 'formacionacademica']);
 //personas
 Route::get('/personas/formacionacademica', [FormacionAcademica::class, 'formacionacademica']);
 
@@ -213,15 +244,21 @@ Route::get('/tipos/eliminartipoevento/{id}', [Tipo::class, 'eliminartipoevento']
 
 
 
-//tipo identificacion
-Route::get('/personas/tipoidentificacion', [Tipoidentificacion::class, 'tipoidentificacion']);
-Route::post('/tipoidentificacion/insertartipoidentificacion', [Tipoidentificacion::class, 'insertartipoidentificacion']);
-Route::get('/tipoidentificacion/tipoidentificacionform', [Tipoidentificacion::class, 'formulariotipoidentificacion']);
-Route::get('/tipoidentificacion/editartipoidentificacion/{id}', [Tipoidentificacion::class, 'editartipoidentificacion']);
-Route::get('/tipoidentificacion/eliminartipoidentificacion/{id}', [Tipoidentificacion::class, 'eliminartipoidentificacion']);
-Route::post('/tipoidentificacion/guardarediciontipoidentificacion', [Tipoidentificacion::class, 'guardarediciontipoidentificacion']);
+    //tipo identificacion
+    Route::get('/personas/tipoidentificacion', [Tipoidentificacion::class, 'tipoidentificacion']);
+    Route::post('/tipoidentificacion/insertartipoidentificacion', [Tipoidentificacion::class, 'insertartipoidentificacion']);
+    Route::get('/tipoidentificacion/tipoidentificacionform', [Tipoidentificacion::class, 'formulariotipoidentificacion']);
+    Route::get('/tipoidentificacion/editartipoidentificacion/{id}', [Tipoidentificacion::class, 'editartipoidentificacion']);
+    Route::get('/tipoidentificacion/eliminartipoidentificacion/{id}', [Tipoidentificacion::class, 'eliminartipoidentificacion']);
+    Route::post('/tipoidentificacion/guardarediciontipoidentificacion', [Tipoidentificacion::class, 'guardarediciontipoidentificacion']);
 
-
+    //personas/personas
+    Route::get('/personas/personas', [Personaspersonas::class, 'persona']);
+    Route::post('/persona/insertarpersona', [Personaspersonas::class, 'insertarpersona']);
+    Route::get('/persona/personaform', [Personaspersonas::class, 'formulariopersona']);
+    Route::get('/persona/editarpersona/{id}', [Personaspersonas::class, 'editarpersona']);
+    Route::get('/persona/eliminarpersona/{id}', [Personaspersonas::class, 'eliminarpersona']);
+    Route::post('/persona/guardaredicionpersona', [Personaspersonas::class, 'guardaredicionpersona']);
 //personas/personas
 Route::get('/personas/personas', [Personaspersonas::class, 'persona']);
 Route::post('/persona/insertarpersona', [Personaspersonas::class, 'insertarpersona']);
@@ -232,6 +269,13 @@ Route::post('/persona/guardaredicionpersona', [Personaspersonas::class, 'guardar
 
 
 
+    ///semilleros 
+    Route::get('/semilleros/semillero', [Semillero::class, 'semillero']);
+    Route::post('/semillero/insertarsemillero', [Semillero::class, 'insertarsemillero']);
+    Route::get('/semillero/semilleroform', [Semillero::class, 'formulariosemillero']);
+    Route::get('/semillero/editarsemillero/{id}', [Semillero::class, 'editarsemillero']);
+    Route::get('/semillero/eliminarsemillero/{id}', [Semillero::class, 'eliminarsemillero']);
+    Route::post('/semillero/guardaredicionsemillero', [Semillero::class, 'guardaredicionsemillero']);
 ///semilleros
 Route::get('/semilleros/semillero', [Semillero::class, 'semillero']);
 Route::post('/semillero/insertarsemillero', [Semillero::class, 'insertarsemillero']);
