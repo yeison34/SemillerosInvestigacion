@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Semilleristas;
 
+use Dompdf\Dompdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -98,5 +99,23 @@ class Semillerista extends Controller
         $persona = SemilleristasModel::findOrFail($id);
         $persona->delete();
         return redirect("semilleristas/semillerista");   
+    }
+
+    public function semilleristapdf(Request $request)
+    {   
+        $semillerista=SemilleristasModel::with('persona','semillero','programa','sede')->get();
+        // Tu código para obtener los datos del coordinador
+
+        $dompdf = new Dompdf();
+
+        $html = view('Semilleristas.semilleristapdf',['semillerista'=>$semillerista])->render();
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+        
+        // Mostrar el PDF en el navegador antes de la descarga
+        $dompdf->stream('Semilleristas.pdf', ['Attachment' => false]);
     }
 }
