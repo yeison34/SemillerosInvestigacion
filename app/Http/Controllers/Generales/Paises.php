@@ -23,7 +23,7 @@ class Paises extends Controller
 
         $pais = new Pais();
         $pais->nombre = $r->input('nombre');
-        
+
         if($r->input('esactivo')=="on"){
             $pais->estaactivo = true;
         }else{
@@ -58,6 +58,12 @@ class Paises extends Controller
         $pais = Pais::findOrFail($id);
         $pais->delete();
         return redirect()->route('listapais');
+    }
+
+    public function cerrarSesion(){
+        //    session_start();
+        session_destroy();
+        return redirect('/');
     }
 
 }

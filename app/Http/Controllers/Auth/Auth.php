@@ -38,17 +38,17 @@ class Auth extends Controller
         $rUsuario = LoginModel::where('usuario', '=',    $usario->usuario  )
                                 ->Where('password', '=',   $usario->password )
                                 ->get();
-        
-        
+
+
         if ($rUsuario->isEmpty()) {
             return redirect('/');
         } else {
             session_start();
-           
+
             $usuarioRol = RolUsuarioModel::where('idusuario', '=', $rUsuario[0]->id)->get();
             $rol =  $usuarioRol[0]->rol->nombre;
             $persona = PersonaModel::where('id','=',$rUsuario[0]->idpersona)->get();
-            
+
 
             if($rol == 'coordinador' ){
 
@@ -84,9 +84,9 @@ class Auth extends Controller
                 $data['rol'] = $rol;
 
             }
-       
+
             $_SESSION['usuario'] = json_encode($data);
-            return redirect('/generales/pais');
+            return view ('home');
         }
     }
 }

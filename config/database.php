@@ -42,13 +42,13 @@ return [
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
-        'academica' => [
+        'semillero' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => 'academica',
-            'username' => env('DB_USERNAME', 'postgres'),
-            'password' => env('DB_PASSWORD', '3424'),
+            'host' => env('DB_HOST', 'semillerosudenar.postgres.database.azure.com'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => 'semillero',
+            'username' => env('DB_USERNAME', 'adminsemillero'),
+            'password' => env('DB_PASSWORD', '3113034506Lc'),
             // ...
         ],
 

@@ -97,11 +97,11 @@ Route::get('/regnotas/listado', [Calificaciones::class, 'index']);
 
 
 
-// login 
+// login
 Route::get('/', [Auth::class, 'login'])->name('login');
-Route::get('/login', [Auth::class, 'userlogin'])->name('userlogin');  
+Route::get('/login', [Auth::class, 'userlogin'])->name('userlogin');
 
-//Route::middleware('autorizacion')->group(function () {
+Route::middleware('autorizacion')->group(function () {
     ///personas
     Route::get('/personas/nivelestudio', [NivelEstudio::class, 'nivelestudio']);
     Route::get('/personas/tipoidentificacion', [TipoIdentificacion::class, 'tipoidentificacion']);
@@ -295,7 +295,7 @@ Route::post('/persona/guardaredicionpersona', [Personaspersonas::class, 'guardar
 
 
 
-    ///semilleros 
+    ///semilleros
     Route::get('/semilleros/semillero', [Semillero::class, 'semillero']);
     Route::post('/semillero/insertarsemillero', [Semillero::class, 'insertarsemillero']);
     Route::get('/semillero/semilleroform', [Semillero::class, 'formulariosemillero']);
@@ -349,3 +349,4 @@ Route::get('/coordinadores/coordinadorform', [Coordinador::class, 'formulariocoo
 Route::get('/coordinadores/editarcoordinador/{id}', [Coordinador::class, 'editarcoordinador']);
 Route::get('/coordinadores/generarpdf', [Coordinador::class, 'crearpdf']);
 Route::post('/coordinadores/guardaredicioncoordinador', [Coordinador::class, 'guardaredicioncoordinador']);
+});
