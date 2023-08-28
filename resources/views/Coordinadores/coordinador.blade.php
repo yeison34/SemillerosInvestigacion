@@ -12,10 +12,13 @@
         <div class="container-fluid px-4">
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="/coordinadores/coordinador">Inicio</a></li>
+                
                 <li class="breadcrumb-item active">Coordinadores</li>
             </ol>
             <div style="margin:8px">
                 <a class="btn btn-success" href="/coordinadores/coordinadorform">Adicionar</a>
+                <a class="btn btn-danger" href="/coordinadores/generarpdf">GENERAR PDF</a>
+
             </div>    
             <div class="card mb-4">
               

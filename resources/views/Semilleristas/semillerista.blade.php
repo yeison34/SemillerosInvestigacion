@@ -17,6 +17,7 @@
             </ol>
             <div style="margin:8px">
                 <a class="btn btn-info" href="{{url('/semillerista/semilleristaform')}}">Adicionar</a>
+                <a class="btn btn-danger" href="/semilleristas/generarpdf">GENERAR PDF</a>
             </div>    
             <div class="card mb-4" style="width: 100%;overflow-x: auto; white-space: nowrap;">
               
