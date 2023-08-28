@@ -20,7 +20,6 @@
         <button type="submit" class="btn btn-success">Registrar</button>
     </form>
 
-
 @stop
 
 @section('content')

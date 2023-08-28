@@ -95,6 +95,15 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <style>
+        .visible{
+            display:block;
+        }
+
+        .oculto{
+            display:none;
+        }
+    </style>
 @stop
 
 @section('js')
