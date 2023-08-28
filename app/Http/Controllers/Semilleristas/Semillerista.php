@@ -15,74 +15,88 @@ class Semillerista extends Controller
 
     public function insertarsemillerista(Request $r){
         $semillerista = new SemilleristasModel();
-        $semillerista->nombre = $r->input('nombre');
-        $semillerista->apellido = $r->input('apellido');
-        $semillerista->identificacion = $r->input('identificacion');
-        $semillerista->idtipoidentificacion = $r->input('idtipoidentificacion');
-        $semillerista->fechanacimiento = $r->input('fechanacimiento');
-        $semillerista->idciudad = $r->input('idciudad');
-        $semillerista->genero = $r->input('genero');
-        $semillerista->direccion = $r->input('direccion');
+        $semillerista->codigo = $r->input('codigo');
+        $semillerista->idsede = $r->input('idsede');
+        $semillerista->idprograma = $r->input('idprograma');
+        $semillerista->idpersona = $r->input('idpersona');
+        $semillerista->semestre = $r->input('semestre');
+        $semillerista->idsemillero = $r->input('idsemillero');
+        $semillerista->fechavinculacion = $r->input('fechavinculacion');
+        //$semillerista->estaactivo = $r->input('estaactivo');
         //$persona->foto = $r->input('foto');
         ///archivo
-        $archivoerror=$_FILES['foto']['error'];
-        if($archivoerror===UPLOAD_ERR_NO_FILE){
-            $persona->foto='xdefaultx.png';
+        if($r->input('estaactivo')=="on"){
+            $semillerista->estaactivo = true;
         }else{
-            $rutadestino=public_path('imagenes/');
-            $rutadestino=$rutadestino . $r->input('identificacion') . $_FILES['foto']['name'];
-            $rutatemp=$_FILES['foto']['tmp_name'];
+            $semillerista->estaactivo = false;
+        }
+        $archivoerror=$_FILES['reportematricula']['error'];
+        if($archivoerror!=UPLOAD_ERR_NO_FILE){
+            $rutadestino=public_path('semilleristas/reportesmatricula/');
+            $rutadestino=$rutadestino . $r->input('idpersona') . $_FILES['reportematricula']['name'];
+            $rutatemp=$_FILES['reportematricula']['tmp_name'];
             move_uploaded_file($rutatemp,$rutadestino);
-            $persona->foto=$r->input('identificacion') . $_FILES['foto']['name'];
+            $semillerista->reportematricula=$r->input('idpersona') . $_FILES['reportematricula']['name'];
         }
         
-        $persona->save();
+        $semillerista->save();
         //return redirect()->action('Personaspersona@editarpersona',['id'=>0]);
-        return redirect('persona/editarpersona/'.$persona->id);
+        return redirect('semilleristas/semillerista');
         //return redirect()->route('editarpersona', ['id' => 0]);
     }
 
-    public function guardaredicionpersona(Request $r){
+    public function guardaredicionsemillerista(Request $r){
         $id=$r->input('id');
-        $persona=PersonaModel::findOrFail($id);
-        $persona->nombre = $r->input('nombre');
-        $persona->apellido = $r->input('apellido');
-        $persona->identificacion = $r->input('identificacion');
-        $persona->idtipoidentificacion = $r->input('idtipoidentificacion');
-        $persona->fechanacimiento = $r->input('fechanacimiento');
-        $persona->idciudad = $r->input('idciudad');
-        $persona->genero = $r->input('genero');
-        $persona->direccion = $r->input('direccion');
-        $archivoerror=$_FILES['foto']['error'];
-        if($archivoerror!=UPLOAD_ERR_NO_FILE){
-            $rutadestino=public_path('imagenes/');
-            $rutadestino=$rutadestino . $r->input('identificacion') . $_FILES['foto']['name'];
-            $rutatemp=$_FILES['foto']['tmp_name'];
-            move_uploaded_file($rutatemp,$rutadestino);
-            $persona->foto=$r->input('identificacion') . $_FILES['foto']['name'];
+        $semillerista=SemilleristasModel::findOrFail($id);
+        $semillerista->codigo = $r->input('codigo');
+        $semillerista->idsede = $r->input('idsede');
+        $semillerista->idprograma = $r->input('idprograma');
+        $semillerista->idpersona = $r->input('idpersona');
+        $semillerista->semestre = $r->input('semestre');
+        $semillerista->idsemillero = $r->input('idsemillero');
+        $semillerista->fechavinculacion = $r->input('fechavinculacion');
+        //$semillerista->estaactivo = $r->input('estaactivo');
+        //$persona->foto = $r->input('foto');
+        ///archivo
+        if($r->input('estaactivo')=="on"){
+            $semillerista->estaactivo = true;
         }else{
-            $persona->foto=$persona->foto;
+            $semillerista->estaactivo = false;
         }
-        $persona->save();//guarde 
-        return redirect('personas/personas');
+        $archivoerror=$_FILES['reportematricula']['error'];
+        if($archivoerror!=UPLOAD_ERR_NO_FILE){
+            $rutadestino=public_path('semilleristas/reportesmatricula/');
+            $rutadestino=$rutadestino . $r->input('idpersona') . $_FILES['reportematricula']['name'];
+            $rutatemp=$_FILES['reportematricula']['tmp_name'];
+            move_uploaded_file($rutatemp,$rutadestino);
+            $semillerista->reportematricula=$r->input('idpersona') . $_FILES['reportematricula']['name'];
+        }else{
+            $semillerista->reportematricula=$semillerista->reportematricula;
+        }
+        $semillerista->save();//guarde 
+        return redirect('semilleristas/semillerista');
     }
 
-    public function formulariopersona(){
-        $ciudad=DB::table("ciudad")->get();
-        $tipoidentificacion=DB::table("tipoidentificacion")->get();
-        return view('Personas.personaform',['tipoidentificacion'=>$tipoidentificacion,'ciudad'=>$ciudad]);
+    public function formulariosemillerista(){
+        $persona=DB::table("persona")->get();
+        $programa=DB::table("programa")->get();
+        $sede=DB::table("sedes")->get();
+        $semillero=DB::table("semillero")->get();
+        return view('Semilleristas.semilleristaform',['persona'=>$persona,'programa'=>$programa,'sede'=>$sede,'semillero'=>$semillero]);
     }
 
-    public function editarpersona($id){
-        $persona=PersonaModel::findOrFail($id);
-        $ciudad=DB::table("ciudad")->get();
-        $tipoidentificacion=DB::table("tipoidentificacion")->get();
-        return view('Personas.personaformeditar',['persona'=>$persona,'tipoidentificacion'=>$tipoidentificacion,'ciudad'=>$ciudad]);
+    public function editarsemillerista($id){
+        $semillerista=SemilleristasModel::findOrFail($id);
+        $persona=DB::table("persona")->get();
+        $programa=DB::table("programa")->get();
+        $sede=DB::table("sedes")->get();
+        $semillero=DB::table("semillero")->get();
+        return view('Semilleristas.semilleristaformeditar',['persona'=>$persona,'programa'=>$programa,'sede'=>$sede,'semillero'=>$semillero,'semillerista'=>$semillerista]);
     }
 
-    public function eliminarpersona($id){
-        $persona = PersonaModel::findOrFail($id);
+    public function eliminarsemillerista($id){
+        $persona = SemilleristasModel::findOrFail($id);
         $persona->delete();
-        return redirect("personas/persona");   
+        return redirect("semilleristas/semillerista");   
     }
 }

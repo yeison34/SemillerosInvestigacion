@@ -13,7 +13,7 @@
         </div>
         <div class="col-sm-4">
             <label for="estaactivo" class="form-label">Esta Activo</label>
-            <input type="checkbox" class="form-control" name="estaactivo">
+            <input type="checkbox" value="1" name="estaactivo">
         </div>
 </div>
 <br>

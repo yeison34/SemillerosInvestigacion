@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoproyectoModel extends Model
 {
-    protected $table = 'Tipoproyecto';
+    protected $table = 'tipoproyecto';
     protected $primaryKey = 'id';
     public $timestamps = true;
 

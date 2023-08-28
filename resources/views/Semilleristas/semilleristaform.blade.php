@@ -4,75 +4,79 @@
 
 @section('content_header')
     <h1>Registro de Personas</h1>
-    <form action= "{{url('persona/insertarpersona')}}" method= "POST" enctype="multipart/form-data">
+    <form action= "{{url('semillerista/insertarsemillerista')}}" method= "POST" enctype="multipart/form-data">
         @csrf
         <br>
         <div class="row">
-            <img style="width:200px;height:150px;" src="{{asset('imagenes/xdefaultx.png')}}">
-        </div>    
-        <br>
-        <br>
-        <div class="row">
+            <div class="col-sm-9"></div>
             <div class="col-sm-3">
-                <label for="idtipoidentificacion" class="form-label">Tipo Identificación</label>
-                <select name="idtipoidentificacion" class="form-control">
-                    <option value="null">Seleccionar</option>
-                    @foreach($tipoidentificacion as $tipo)
-                        <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-sm-3">
-                <label for="identificacion" class="form-label">Identificación</label>
-                <input type="text" class="form-control" id="identificacion" name="identificacion" placeholder="Ingrese el código">
-            </div>
-            <div class="col-sm-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el código">
-            </div>
-            <div class="col-sm-3">
-                <label for="apellido" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingrese el código">
+                <label for="estaactivo" class="form-label">Esta Activo</label>
+                <input type="checkbox" id="estaactivo" name="estaactivo" placeholder="Ingrese el código">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-sm-3">
-                <label for="fechanacimiento" class="form-label">Fecha Nacimiento</label>
-                <input type="date" class="form-control" id="apellido" name="fechanacimiento" placeholder="Ingrese el código">
+                <label for="codigo" class="form-label">Codigo</label>
+                <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Ingrese el código">
             </div>
             <div class="col-sm-3">
-                <label for="idciudad" class="form-label">Ciudad</label>
-                <select name="idciudad" class="form-control">
+                <label for="idpersona" class="form-label">Semillerista</label>
+                <select name="idpersona" class="form-control">
                     <option value="null">Seleccionar</option>
-                    @foreach($ciudad as $ciudad)
-                        <option value="{{$ciudad->id}}">{{$ciudad->nombre}}</option>
+                    @foreach($persona as $items)
+                        <option value="{{$items->id}}">{{$items->nombre ." " . $items->apellido}}</option>
                     @endforeach
                 </select>
             </div>
             <div class="col-sm-3">
-                <label for="genero" class="form-label">Genero</label>
-                <select name="genero" class="form-control">
+                <label for="idsede" class="form-label">Sede</label>
+                <select name="idsede" class="form-control">
                     <option value="null">Seleccionar</option>
-                    <option value="M">Masculino</option>
-                    <option value="F">Femenino</option>
+                    @foreach($sede as $items)
+                        <option value="{{$items->id}}">{{$items->nombre}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-sm-3">
-                <label for="direccion" class="form-label">Dirección</label>
-                <input type="text"  class="form-control" name="direccion" placeholder="Direccion">
+                <label for="semestre" class="form-label">Semestre</label>
+                <input type="text" class="form-control" id="semestre" name="semestre" placeholder="Ingrese el código">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-3">
+                <label for="idprograma" class="form-label">Programa</label>
+                <select name="idprograma" class="form-control">
+                    <option value="null">Seleccionar</option>
+                    @foreach($programa as $items)
+                        <option value="{{$items->id}}">{{$items->nombre}}</option>
+                    @endforeach
+                </select>
+            </div>  
+            <div class="col-sm-3">
+                <label for="idsemillero" class="form-label">Semillero</label>
+                <select name="idsemillero" class="form-control">
+                    <option value="null">Seleccionar</option>
+                    @foreach($semillero as $items)
+                        <option value="{{$items->id}}">{{$items->nombre}}</option>
+                    @endforeach
+                </select>
+            </div>    
+            
+            <div class="col-sm-3">
+                <label for="fechavinculacion" class="form-label">Fecha Vinculación</label>
+                <input type="date" class="form-control" id="fechavinculacion" name="fechavinculacion" placeholder="Ingrese el código">
+            </div>
+            <div class="col-sm-3">
+                <label for="reportematricula" class="form-label">Reporte de Matricula</label>
+                <input type="file" accept=".docx,.pdf" class="form-control" name="reportematricula" placeholder="foto">
             </div>
         </div>
         <br>
         
+        
         <div class="row">
-            <div class="col-sm-3">
-                <label for="foto" class="form-label">Foto</label>
-                <input type="file" accept=".jpg,.jpeg,.phg,.gif" class="form-control" name="foto" placeholder="foto">
-            </div>
-            <div class="col-sm-6">
-            </div> 
-            <div class="col-sm-3">
                 <br>
                 <button type="submit" class="btn btn-success">Registrar</button>
             </div>    

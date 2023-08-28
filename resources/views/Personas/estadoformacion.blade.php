@@ -11,7 +11,7 @@
     <main>
         <div class="container-fluid px-4">
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="/personas/nivelestudio">Inicio</a></li>
                 <li class="breadcrumb-item active">Estados Formacion</li>
             </ol>
             <div style="margin:8px">
