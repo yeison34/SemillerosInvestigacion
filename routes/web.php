@@ -40,10 +40,12 @@ use App\Http\Controllers\Monitores\Monitor;
 //proyectos
 use App\Http\Controllers\Proyectos\Tipoproyecto;
 use App\Http\Controllers\Proyectos\Estadoproyecto;
-
+use App\Http\Controllers\Coordinadores\Coordinador;
 //contradores eventos
 use App\Http\Controllers\Eventos\Tipo;
 
+use App\Http\Controllers\Eventos\Clasificacion;
+use App\Http\Controllers\Eventos\Modalidad;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -99,12 +101,12 @@ Route::get('/regnotas/listado', [Calificaciones::class, 'index']);
 Route::get('/', [Auth::class, 'login'])->name('login');
 Route::get('/login', [Auth::class, 'userlogin'])->name('userlogin');  
 
-Route::middleware('autorizacion')->group(function () {
+//Route::middleware('autorizacion')->group(function () {
     ///personas
     Route::get('/personas/nivelestudio', [NivelEstudio::class, 'nivelestudio']);
     Route::get('/personas/tipoidentificacion', [TipoIdentificacion::class, 'tipoidentificacion']);
     //Route::get('/personas/titulo', [Titulo::class, 'titulo']);
-
+//});
     ///generales pedro//ciudad
     Route::get('/generales/ciudad', [Ciudad::class, 'ciudad']);
     Route::post('/ciudad/insertarciudad', [Ciudad::class, 'insertarciudad']);
@@ -234,6 +236,30 @@ Route::get('/tipos/editartipoevento/{id}', [Tipo::class, 'editartipoevento']);
 Route::post('/tipos/guardarediciontipoevento', [Tipo::class, 'guardarediciontipoevento']);
 Route::get('/tipos/eliminartipoevento/{id}', [Tipo::class, 'eliminartipoevento']);
 
+//Eventos/tipos
+Route::get('/eventos/tipos', [Tipo::class, 'tipoevento']);
+Route::get('/tipos/tipoeventoform', [Tipo::class, 'formulariotipoevento']);
+Route::post('/tipos/insertartipoevento', [Tipo::class, 'insertartipoevento']);
+Route::get('/tipos/editartipoevento/{id}', [Tipo::class, 'editartipoevento']);
+Route::post('/tipos/guardarediciontipoevento', [Tipo::class, 'guardarediciontipoevento']);
+Route::get('/tipos/eliminartipoevento/{id}', [Tipo::class, 'eliminartipoevento']);
+
+//Eventos/modalidad
+Route::get('/eventos/modalidad', [Modalidad::class, 'modalidadevento']);
+Route::get('/modalidad/modalidadeventoform', [Modalidad::class, 'formulariomodalidadevento']);
+Route::post('/modalidad/insertarmodalidadevento', [Modalidad::class, 'insertarmodalidadevento']);
+Route::get('/modalidad/editarmodalidadevento/{id}', [Modalidad::class, 'editarmodalidadevento']);
+Route::post('/modalidad/guardaredicionmodalidadevento', [Modalidad::class, 'guardaredicionmodalidadevento']);
+Route::get('/modalidad/eliminarmodalidadevento/{id}', [Modalidad::class, 'eliminarmodalidadevento']);
+
+//Eventos/Clasificacion
+Route::get('/eventos/clasificacion', [Clasificacion::class, 'clasificacionevento']);
+Route::get('/clasificacion/clasificacioneventoform', [Clasificacion::class, 'formularioclasificacionevento']);
+Route::post('/clasificacion/insertarclasificacionevento', [Clasificacion::class, 'insertarclasificacionevento']);
+Route::get('/clasificacion/editarclasificacionevento/{id}', [Clasificacion::class, 'editarclasificacionevento']);
+Route::post('/clasificacion/guardaredicionclasificacionevento', [Clasificacion::class, 'guardaredicionclasificacionevento']);
+Route::get('/clasificacion/eliminarclasificacionevento/{id}', [Clasificacion::class, 'eliminarclasificacionevento']);
+
 
 
 
@@ -315,3 +341,11 @@ Route::get('/estadoproyecto/estadoproyectoform', [Estadoproyecto::class, 'formul
 Route::get('/estadoproyecto/editarestadoproyecto/{id}', [Estadoproyecto::class, 'editarestadoproyecto']);
 Route::get('/estadoproyecto/eliminarestadoproyecto/{id}', [Estadoproyecto::class, 'eliminarestadoproyecto']);
 Route::post('/estadoproyecto/guardaredicionestadoproyecto', [Estadoproyecto::class, 'guardaredicionestadoproyecto']);
+
+//coordinadores
+Route::get('/coordinadores/coordinador', [Coordinador::class, 'coordinador']);
+Route::post('/coordinadores/insertarcoordinador', [Coordinador::class, 'insertarcoordinador']);
+Route::get('/coordinadores/coordinadorform', [Coordinador::class, 'formulariocoordinador']);
+Route::get('/coordinadores/editarcoordinador/{id}', [Coordinador::class, 'editarcoordinador']);
+Route::get('/coordinadores/generarpdf', [Coordinador::class, 'crearpdf']);
+Route::post('/coordinadores/guardaredicioncoordinador', [Coordinador::class, 'guardaredicioncoordinador']);

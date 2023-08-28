@@ -477,7 +477,7 @@ return [
                         ],
                         [
                             'text' => 'Coordinadores',
-                            'url' => 'semilleros/coordinadores',
+                            'url' => 'coordinadores/coordinador',
                             'icon' => 'fas fa-fw fa-home',
                         ],
                         [
